@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>꼬물상자 — 우리 아이가 주인공인 노래·그림·동화</title>
+  <meta name="description" content="아이 정보만 등록하면 아이가 주인공인 노래, 그림, 동화를 만들어 드려요. 아이의 사진과 그림은 매달 앨범과 영상으로 차곡차곡 엮어 드립니다.">
+  <meta property="og:title" content="꼬물상자 — 우리 아이가 주인공인 이야기">
+  <meta property="og:description" content="아이가 주인공인 노래·그림·동화, 그리고 매달 도착하는 성장 앨범.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://aldaltimes-creator.github.io/mokri/kkomul/assets/img/og-image.jpg">
+  <meta property="og:image:alt" content="거실 소파에 앉아 활짝 웃는 이안이와 친구">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <a class="skip" href="#main">본문으로 건너뛰기</a>
+
+  <!-- 일러스트 공용 캐릭터: 이안이(22개월), 소방차 빵빵이 -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="kid" viewBox="0 0 40 64">
+      <path d="M7 36h26l3 16H4z" class="kid__shirt"/>
+      <rect x="8" y="50" width="24" height="10" rx="4" class="kid__pants"/>
+      <rect x="10" y="58" width="8" height="6" rx="3" class="kid__shoe"/>
+      <rect x="22" y="58" width="8" height="6" rx="3" class="kid__shoe"/>
+      <circle cx="20" cy="20" r="16" class="kid__face"/>
+      <path d="M4.5 17C5 7 12 3 20 3s15 4 15.5 14C31 12 25 10 20 11c-6 0-11 2-15.5 6z" class="kid__hair"/>
+      <path d="M18 3.5c0-3 4-4 6-2" class="kid__tuft"/>
+      <circle cx="14.5" cy="22" r="1.9" class="kid__eye"/>
+      <circle cx="25.5" cy="22" r="1.9" class="kid__eye"/>
+      <circle cx="10.5" cy="27" r="2.4" class="kid__cheek"/>
+      <circle cx="29.5" cy="27" r="2.4" class="kid__cheek"/>
+      <path d="M16.5 28q3.5 3 7 0" class="kid__mouth"/>
+    </symbol>
+    <symbol id="truck" viewBox="0 0 120 64">
+      <path d="M4 8h70M4 13h70M10 8v5M20 8v5M30 8v5M40 8v5M50 8v5M60 8v5M70 8v5" class="truck__ladder"/>
+      <rect x="0" y="14" width="80" height="38" rx="7" class="truck__body"/>
+      <path d="M76 22h20q9 0 13 9l7 13v8H76z" class="truck__body"/>
+      <rect x="0" y="36" width="116" height="5" class="truck__stripe"/>
+      <circle cx="40" cy="26" r="6" class="truck__reel"/>
+      <rect x="86" y="16" width="12" height="6" rx="3" class="truck__siren"/>
+      <rect x="84" y="26" width="20" height="13" rx="3" class="truck__win"/>
+      <circle cx="90" cy="32" r="2.2" class="truck__eye"/>
+      <circle cx="99" cy="32" r="2.2" class="truck__eye"/>
+      <path d="M91.5 36q3 2 6 0" class="truck__mouth"/>
+      <circle cx="22" cy="54" r="10" class="truck__wheel"/><circle cx="22" cy="54" r="4" class="truck__hub"/>
+      <circle cx="96" cy="54" r="10" class="truck__wheel"/><circle cx="96" cy="54" r="4" class="truck__hub"/>
+    </symbol>
+  </svg>
+
+  <header class="top">
+    <div class="wrap top__inner">
+      <a class="logo" href="#main" aria-label="꼬물상자 처음으로">
+        <svg viewBox="0 0 40 40" aria-hidden="true">
+          <path class="logo__box" d="M6 17h28v16a3 3 0 0 1-3 3H9a3 3 0 0 1-3-3z"/>
+          <path class="logo__lid" d="M4 12.5 20 9l16 3.5V17H4z"/>
+          <path class="logo__star" d="m20 2 1.6 3.3 3.6.5-2.6 2.5.6 3.6-3.2-1.7-3.2 1.7.6-3.6-2.6-2.5 3.6-.5z"/>
+        </svg>
+        꼬물상자
+      </a>
+      <nav class="top__nav" aria-label="주요 메뉴">
+        <a href="#how">서비스 소개</a>
+        <a href="#samples">미리보기</a>
+        <a href="#album">월간 앨범</a>
+        <a href="#faq">자주 묻는 질문</a>
+      </nav>
+      <div class="top__actions">
+        <a class="link" href="#">로그인</a>
+        <a class="btn btn--primary btn--sm" href="#start">시작하기</a>
+      </div>
+    </div>
+  </header>
+
+  <div id="smooth-wrapper">
+  <div id="smooth-content">
+  <main id="main">
+
+    <!-- ① 첫 화면 -->
+    <section class="hero">
+      <div class="wrap hero__inner">
+        <div class="hero__text">
+          <p class="eyebrow">아이를 위한 이야기 구독</p>
+          <h1 class="hero__title">이번 이야기의<br>주인공은 <em>우리 아이</em>예요</h1>
+          <p class="hero__lead">이름과 좋아하는 것만 알려 주세요. 아이가 주인공인 노래, 그림, 동화를 만들어 드려요. 올려 주신 사진과 그림은 매달 앨범과 영상으로 차곡차곡 엮어 드립니다.</p>
+          <div class="hero__cta">
+            <a class="btn btn--primary" href="#start">무료로 동화 만들어 보기</a>
+            <a class="btn btn--ghost" href="#samples">샘플 먼저 볼게요</a>
+          </div>
+          <p class="hero__note">가입 후 첫 동화 1편은 무료로 만들어 드려요</p>
+        </div>
+
+        <div class="hero__art">
+          <figure class="book">
+            <img src="assets/img/hero-ian-bbangbbang.jpg" width="1600" height="1132"
+                 alt="동화 한 장면. 소방서 앞에서 이안이가 웃는 소방차 빵빵이를 쓰다듬고 있어요. 글: 소방차 빵빵이가 이안이에게 물었어요. “이안아, 오늘은 어디로 출동해 볼까?”">
+          </figure>
+          <div class="chip-float chip-float--1" aria-hidden="true">♪ 이안이의 잠자리 노래</div>
+          <div class="chip-float chip-float--2" aria-hidden="true">11월 앨범이 도착했어요</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ② 이렇게 만들어져요 -->
+    <section class="section" id="how" aria-labelledby="how-title">
+      <div class="wrap">
+        <header class="section__head">
+          <p class="eyebrow">이렇게 만들어져요</p>
+          <h2 id="how-title" class="section__title">세 걸음이면 충분해요</h2>
+        </header>
+        <ol class="steps">
+          <li class="step">
+            <span class="step__num">1</span>
+            <svg class="step__icon" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="18" r="9"/><path d="M8 42c2-9 8-14 16-14s14 5 16 14"/></svg>
+            <h3>아이 소개하기</h3>
+            <p>이름, 생일, 좋아하는 동물과 색, 가족 호칭을 알려 주세요. 아이를 닮은 캐릭터가 만들어져요.</p>
+          </li>
+          <li class="step">
+            <span class="step__num">2</span>
+            <svg class="step__icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M10 8h22l6 6v26H10z"/><path d="M17 20h14M17 27h14M17 34h8"/></svg>
+            <h3>이야기 만들기</h3>
+            <p>주제와 분위기를 고르면 아이 이름이 들어간 노래, 그림, 동화가 완성돼요.</p>
+          </li>
+          <li class="step">
+            <span class="step__num">3</span>
+            <svg class="step__icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M8 12h32v26H8z"/><path d="m8 32 10-10 8 8 5-5 9 9"/><circle cx="31" cy="19" r="3"/></svg>
+            <h3>매달 앨범 받기</h3>
+            <p>사진과 아이 그림을 올려 두면, 말일에 월간 앨범과 추억 영상으로 엮어 드려요.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ③ 샘플 미리보기 -->
+    <section class="section section--tint" id="samples" aria-labelledby="samples-title">
+      <div class="wrap">
+        <header class="section__head">
+          <p class="eyebrow">미리보기</p>
+          <h2 id="samples-title" class="section__title">이안이를 위해 만든 샘플이에요</h2>
+          <p class="section__lead">22개월 이안이 · 소방차와 빨간색을 좋아해요 · 요즘 양치를 싫어해요</p>
+        </header>
+
+        <div class="tabs" role="tablist" aria-label="샘플 종류">
+          <button class="tab" role="tab" id="tab-song" aria-controls="panel-song" aria-selected="true">노래</button>
+          <button class="tab" role="tab" id="tab-story" aria-controls="panel-story" aria-selected="false" tabindex="-1">동화</button>
+          <button class="tab" role="tab" id="tab-album" aria-controls="panel-album" aria-selected="false" tabindex="-1">앨범</button>
+        </div>
+
+        <div class="samples__stage">
+        <!-- 노래 -->
+        <div class="panel" role="tabpanel" id="panel-song" aria-labelledby="tab-song">
+          <div class="card player">
+            <div class="player__cover" aria-hidden="true">
+              <img src="assets/img/song-cover.jpg" width="600" height="600" loading="lazy" alt="">
+            </div>
+            <div class="player__body">
+              <p class="player__meta">자장가 · 잔잔하게</p>
+              <h3 class="player__title">반짝반짝 이안이 꿈나라</h3>
+              <div class="player__controls">
+                <button class="play" type="button" aria-label="재생" data-play>
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path class="i-play" d="M8 5v14l11-7z"/><path class="i-pause" d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg>
+                </button>
+                <div class="progress" aria-hidden="true"><span data-progress></span></div>
+                <span class="player__time" data-time>0:00 / 0:24</span>
+              </div>
+              <p class="player__hint">샘플은 가사 흐름만 보여 드려요. 실제 서비스에서는 음원으로 들을 수 있어요.</p>
+            </div>
+            <ol class="lyrics" data-lyrics>
+              <li>반짝반짝 작은 별이 창문을 두드려요</li>
+              <li>포근한 이불 덮은 우리 이안이</li>
+              <li>소방차 빵빵이도 하품을 하네</li>
+              <li>엄마 아빠 사랑해, 잘 자요 이안아</li>
+            </ol>
+          </div>
+        </div>
+
+        <!-- 동화 -->
+        <div class="panel" role="tabpanel" id="panel-story" aria-labelledby="tab-story" hidden>
+          <div class="card story">
+            <div class="story__stage">
+              <figure class="story__page is-active" data-page>
+                <img src="assets/img/story-1-no-brushing.jpg" width="1600" height="1000"
+                     alt="욕실에서 잠옷 입은 이안이가 눈을 꼭 감고 고개를 돌리며 칫솔을 밀어내고, 세면대 위 장난감 빵빵이가 걱정스레 바라봐요">
+                <figcaption>이안이는 이 닦기가 싫었어요. “싫어, 싫어!”</figcaption>
+              </figure>
+              <figure class="story__page" data-page>
+                <img src="assets/img/story-2-bbangbbang.jpg" width="1600" height="1000" loading="lazy"
+                     alt="경광등을 반짝이며 활짝 웃는 소방차 빵빵이">
+
+                <figcaption>그때 빵빵이가 삐뽀삐뽀 출동! “이안아, 나랑 같이 쓱싹쓱싹 하자!”</figcaption>
+              </figure>
+              <figure class="story__page" data-page>
+                <img src="assets/img/story-3-dreamland.jpg" width="1600" height="1000" loading="lazy"
+                     alt="달과 별이 보이는 밤, 노란 이불을 덮고 웃으며 잠든 이안이와 그 옆에서 불빛을 은은하게 켠 채 잠든 빵빵이">
+                <figcaption>반짝반짝 깨끗한 이로 이안이와 빵빵이는 꿈나라로 떠났답니다.</figcaption>
+              </figure>
+            </div>
+            <div class="story__nav">
+              <button class="icon-btn" type="button" data-prev aria-label="이전 쪽">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 5-7 7 7 7"/></svg>
+              </button>
+              <span class="story__count" data-count aria-live="polite">1 / 3</span>
+              <button class="icon-btn" type="button" data-next aria-label="다음 쪽">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg>
+              </button>
+            </div>
+            <p class="story__title">「빵빵이와 반짝반짝 양치 출동」 · 생활 습관 동화</p>
+          </div>
+        </div>
+
+        <!-- 앨범 -->
+        <div class="panel" role="tabpanel" id="panel-album" aria-labelledby="tab-album" hidden>
+          <div class="card album-sample">
+            <div class="album-sample__cover">
+              <p class="album-sample__month">2026. 11</p>
+              <p class="album-sample__name">이안이의<br>스물두 번째 달</p>
+              <div class="polaroids" aria-hidden="true">
+                <span class="polaroid p1"><img src="assets/img/album-playground.jpg" width="600" height="600" loading="lazy" alt=""></span>
+                <span class="polaroid p2"><img src="assets/img/album-firestation.jpg" width="600" height="600" loading="lazy" alt=""></span>
+                <span class="polaroid p3"><img src="assets/img/album-crayon.jpg" width="600" height="600" loading="lazy" alt=""></span>
+              </div>
+            </div>
+            <ul class="album-sample__list">
+              <li><strong>사진 24장</strong><span>놀이터 미끄럼틀, 소방서 구경 간 날</span></li>
+              <li><strong>아이 그림 5장</strong><span>크레용으로 끼적끼적 첫 낙서</span></li>
+              <li><strong>아이의 말 3개</strong><span>“엄마, 빵빵! 삐뽀삐뽀!”</span></li>
+              <li><strong>이달의 노래 · 동화</strong><span>앨범 영상의 배경음악이 돼요</span></li>
+            </ul>
+          </div>
+        </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ④ 월간 앨범 -->
+    <section class="section" id="album" aria-labelledby="album-title">
+      <div class="wrap album">
+        <div class="album__text">
+          <p class="eyebrow">매달 도착하는 선물</p>
+          <h2 id="album-title" class="section__title">정리하지 않아도<br>앨범이 쌓여요</h2>
+          <p class="section__lead">사진과 그림은 올리기만 하세요. 말일에 그달의 기록과 아이 맞춤 노래로 앨범과 영상을 만들어 드려요.</p>
+          <ul class="checks">
+            <li><b>디지털 포토북</b> 사진, 아이 그림, 아이가 한 말, 이달의 동화가 한 권에</li>
+            <li><b>추억 영상</b> 1~2분 영상, 배경음악은 이달에 만든 우리 아이 노래</li>
+            <li><b>며칠간 직접 편집</b> 사진 순서와 표지 문구를 고친 뒤 확정</li>
+            <li><b>가족과 함께</b> 할머니, 할아버지를 초대하면 보기 전용으로 함께 봐요</li>
+          </ul>
+        </div>
+        <div class="shelf" aria-hidden="true">
+          <div class="shelf__books">
+            <span class="spine s1"><i>8월</i></span>
+            <span class="spine s2"><i>9월</i></span>
+            <span class="spine s3"><i>10월</i></span>
+            <span class="spine s4"><i>11월</i></span>
+          </div>
+          <div class="shelf__board"></div>
+          <p class="shelf__cap">한 해가 지나면 열두 권을 묶어 <b>올해의 성장 앨범</b>으로</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ⑤ 아이 정보 보호 -->
+    <section class="section section--tint" aria-labelledby="safe-title">
+      <div class="wrap">
+        <header class="section__head">
+          <p class="eyebrow">아이 정보 보호</p>
+          <h2 id="safe-title" class="section__title">우리 아이 기록은 우리 가족만 봐요</h2>
+        </header>
+        <ul class="safe">
+          <li class="card safe__item">
+            <svg viewBox="0 0 48 48" aria-hidden="true"><rect x="10" y="21" width="28" height="20" rx="4"/><path d="M16 21v-6a8 8 0 0 1 16 0v6"/></svg>
+            <h3>기본은 비공개</h3>
+            <p>모든 콘텐츠는 비공개로 저장돼요. 공유는 보호자가 직접 켤 때만 가능해요.</p>
+          </li>
+          <li class="card safe__item">
+            <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 12h32v24H8z"/><path d="m8 30 10-9 8 7 5-4 9 8"/><path d="M6 42 42 6"/></svg>
+            <h3>사진은 학습에 쓰지 않아요</h3>
+            <p>올려 주신 사진과 그림은 앨범을 만드는 데만 써요. AI 학습에는 사용하지 않아요.</p>
+          </li>
+          <li class="card safe__item">
+            <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 6 38 12v11c0 9-6 16-14 19-8-3-14-10-14-19V12z"/><path d="m18 24 4 4 8-8"/></svg>
+            <h3>아이에게 맞는 내용만</h3>
+            <p>만들어진 콘텐츠는 부적절한 표현을 걸러낸 뒤 보여 드려요. 언제든 삭제할 수 있어요.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ⑥ FAQ -->
+    <section class="section" id="faq" aria-labelledby="faq-title">
+      <div class="wrap wrap--narrow">
+        <header class="section__head">
+          <p class="eyebrow">자주 묻는 질문</p>
+          <h2 id="faq-title" class="section__title">궁금한 점이 있으신가요?</h2>
+        </header>
+        <div class="faq">
+          <details>
+            <summary>몇 살 아이까지 이용할 수 있나요?</summary>
+            <p>나이 제한은 없지만 만 2~7세 아이에게 가장 잘 맞도록 만들었어요. 등록한 나이에 맞춰 동화 문장 길이와 어휘를 자동으로 조절해요.</p>
+          </details>
+          <details>
+            <summary>한 달에 몇 개까지 만들 수 있나요?</summary>
+            <p>구독 상품마다 노래, 이미지, 동화의 월 제공량이 정해져 있어요. 남은 횟수는 홈과 구독 관리에서 언제든 확인할 수 있어요.</p>
+          </details>
+          <details>
+            <summary>사진을 많이 못 올린 달에도 앨범이 만들어지나요?</summary>
+            <p>네. 그달에 올린 기록과 만든 노래, 그림, 동화를 모아 앨범을 만들어요. 마감 며칠 전에 업로드 알림도 보내 드려요.</p>
+          </details>
+          <details>
+            <summary>아이가 둘이에요. 따로 만들 수 있나요?</summary>
+            <p>아이를 여러 명 등록하고 화면 위에서 전환할 수 있어요. 앨범과 콘텐츠도 아이별로 따로 쌓여요.</p>
+          </details>
+          <details>
+            <summary>해지하면 만든 앨범은 어떻게 되나요?</summary>
+            <p>해지 후에도 일정 기간 동안 앨범과 콘텐츠를 내려받을 수 있어요. 기간은 해지할 때 다시 안내해 드려요.</p>
+          </details>
+        </div>
+        <p class="faq__more"><a class="link" href="#">FAQ 전체 보기 →</a></p>
+      </div>
+    </section>
+
+    <!-- ⑦ 시작 유도 -->
+    <section class="cta" id="start" aria-labelledby="cta-title">
+      <div class="wrap cta__inner">
+        <span class="cta__blob cta__blob--1" aria-hidden="true"></span>
+        <span class="cta__blob cta__blob--2" aria-hidden="true"></span>
+        <h2 id="cta-title" class="cta__title">오늘 밤, 우리 아이 이름이 나오는<br>첫 동화를 읽어 주세요</h2>
+        <p>가입하고 아이를 소개하면 첫 동화 1편을 무료로 만들어 드려요.</p>
+        <a class="btn btn--primary" href="#">무료로 시작하기</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="wrap foot__inner">
+      <p class="logo logo--sm">꼬물상자</p>
+      <nav aria-label="하단 메뉴">
+        <a href="#">이용약관</a>
+        <a href="#"><b>개인정보처리방침</b></a>
+        <a href="#">고객센터</a>
+        <a href="#">요금 안내</a>
+      </nav>
+      <p class="foot__copy">© 2026 꼬물상자. 연습용 프로젝트입니다.</p>
+    </div>
+  </footer>
+  </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollSmoother.min.js"></script>
+  <script src="assets/main.js"></script>
+  <script src="assets/motion.js"></script>
+</body>
+</html>
