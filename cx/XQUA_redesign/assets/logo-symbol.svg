@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" role="img" aria-label="XQUA 심볼">
+  <!-- 측정 프레임(스캔 브래킷) 안의 검증 체크 -->
+  <path d="M4 15V4h11M33 4h11v11M44 33v11H33M15 44H4V33" stroke="#3D5AFE" stroke-width="4" stroke-linecap="square"/>
+  <path d="M14 25l7 7 13-15" stroke="#19E3B1" stroke-width="5" stroke-linecap="square" stroke-linejoin="miter"/>
+</svg>
