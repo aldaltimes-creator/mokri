@@ -1,0 +1,327 @@
+/* 온탕 — 목욕탕이었던 커피집
+   팔레트: 분홍 타일 벽, 소나무색 요금판, 옥색 냉탕 타일, 달걀 노른자 간판 */
+:root {
+  --tile: #f4d6cc;        /* 분홍 타일 (바탕) */
+  --grout: #e6bdb0;       /* 타일 줄눈 */
+  --pine: #143a34;        /* 소나무 (글자, 요금판) */
+  --jade: #3f8c7c;        /* 옥색 냉탕 타일 */
+  --jade-soft: #a9d2c6;
+  --yolk: #efb43c;        /* 노른자 간판 */
+  --steam: #fdf5f1;       /* 김 서린 흰색 */
+  --ink-soft: #3d5a54;
+
+  --display: "Hahmlet", "Noto Serif KR", serif;
+  --body: "Gowun Dodum", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+
+  --step--1: 0.875rem;
+  --step-0: 1.0625rem;
+  --step-1: 1.375rem;
+  --step-2: 1.875rem;
+  --step-3: clamp(2rem, 4.5vw, 3rem);
+  --gutter: clamp(1rem, 4vw, 3.5rem);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background-color: var(--tile);
+  color: var(--pine);
+  font-family: var(--body);
+  font-size: var(--step-0);
+  line-height: 1.75;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  -webkit-font-smoothing: antialiased;
+}
+img, svg { display: block; max-width: 100%; }
+h1, h2, h3 { font-family: var(--display); margin: 0; line-height: 1.2; }
+p { margin: 0; }
+section[id] { scroll-margin-top: 5.5rem; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--jade); outline-offset: 3px; border-radius: 2px; }
+
+.skip { position: absolute; left: -999px; top: 0; background: var(--pine); color: var(--steam); padding: .5rem 1rem; z-index: 10; }
+.skip:focus { left: 1rem; top: 1rem; }
+
+/* 타일 무늬: 줄눈 두 방향 */
+.tiled {
+  background-image:
+    linear-gradient(var(--grout) 2px, transparent 2px),
+    linear-gradient(90deg, var(--grout) 2px, transparent 2px);
+  background-size: 34px 34px;
+}
+
+/* ---------- 상단 ---------- */
+.top {
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  padding: 1rem var(--gutter);
+  position: sticky; top: 0; z-index: 5;
+  background: color-mix(in srgb, var(--tile) 92%, transparent);
+  backdrop-filter: blur(6px);
+  border-bottom: 2px solid var(--grout);
+}
+.top__mark {
+  display: inline-flex; align-items: center; gap: .5rem;
+  font-family: var(--display); font-weight: 800; font-size: 1.25rem;
+  text-decoration: none;
+}
+.top__mark svg { width: 28px; height: 28px; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; }
+.top__mark circle { fill: var(--yolk); stroke: var(--pine); }
+.top__nav { display: flex; gap: clamp(.75rem, 3vw, 2rem); font-size: var(--step--1); }
+.top__nav a { text-decoration: none; padding: .25rem 0; border-bottom: 2px solid transparent; }
+.top__nav a:hover { border-bottom-color: var(--pine); }
+
+/* ---------- 히어로 ---------- */
+.hero {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  grid-template-areas: "sign body" "sign temp";
+  gap: clamp(1.5rem, 5vw, 5rem);
+  padding: clamp(5rem, 10vw, 8.5rem) var(--gutter) clamp(3rem, 8vw, 7rem);
+  max-width: 1280px; margin: 0 auto;
+  align-items: start;
+}
+.hero__sign {
+  grid-area: sign;
+  position: relative;
+  background: var(--yolk);
+  color: var(--pine);
+  padding: 2.5rem 1.25rem 1.5rem;
+  border: 4px solid var(--pine);
+  border-radius: 999px 999px 10px 10px;
+  box-shadow: 10px 10px 0 var(--pine);
+}
+.hero__sign h1 {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  font-weight: 900;
+  font-size: clamp(5.5rem, 15vw, 12rem);
+  line-height: .95;
+  letter-spacing: -.02em;
+}
+.steam {
+  position: absolute; left: 50%; bottom: 100%;
+  width: 70%; transform: translate(-50%, 18%);
+  fill: none; stroke: var(--pine); stroke-width: 6; stroke-linecap: round;
+}
+.steam path {
+  stroke-dasharray: 260; stroke-dashoffset: 260;
+  animation: rise 1.8s cubic-bezier(.3,.6,.3,1) .3s forwards;
+}
+.steam path:nth-child(2) { animation-delay: .5s; }
+.steam path:nth-child(3) { animation-delay: .7s; }
+@keyframes rise { to { stroke-dashoffset: 0; } }
+
+.hero__body { grid-area: body; max-width: 36rem; padding-top: clamp(4rem, 9vw, 8rem); }
+.hero__since { font-size: var(--step--1); color: var(--ink-soft); margin-bottom: 1.25rem; padding-left: .75rem; border-left: 3px solid var(--jade); }
+.hero__lead {
+  font-family: var(--display); font-weight: 800;
+  font-size: clamp(2.125rem, 5.4vw, 4rem); line-height: 1.18; letter-spacing: -.025em;
+  margin-bottom: 1.5rem;
+}
+.hero__text { max-width: 32em; color: var(--ink-soft); }
+.hero__cta, .visit__cta { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 2rem; }
+
+.btn {
+  display: inline-block; text-decoration: none;
+  font-family: var(--display); font-weight: 500; font-size: 1rem;
+  padding: .8rem 1.4rem; border-radius: 999px; border: 2px solid var(--pine);
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.btn--yolk { background: var(--yolk); box-shadow: 4px 4px 0 var(--pine); }
+.btn--yolk:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--pine); }
+.btn--yolk:active { transform: translate(2px, 2px); box-shadow: 2px 2px 0 var(--pine); }
+.btn--line:hover { background: var(--steam); }
+
+/* 온도계처럼 두 숫자를 나란히 */
+.hero__temp {
+  grid-area: temp;
+  display: flex; flex-wrap: wrap; gap: 1rem; margin: 0;
+}
+.hero__temp > div {
+  display: flex; align-items: baseline; gap: .9rem;
+  padding: .6rem 1.1rem .6rem .9rem;
+  background: var(--steam); border: 2px solid var(--pine); border-radius: 10px;
+}
+.hero__temp > div:first-child { background: var(--jade-soft); }
+.hero__temp dt { font-size: var(--step--1); color: var(--ink-soft); }
+.hero__temp dd { margin: 0; font-family: var(--display); font-weight: 800; font-size: var(--step-2); line-height: 1; }
+.hero__temp dd span { font-weight: 300; font-size: .7em; }
+
+/* ---------- 요금표 ---------- */
+.menu { padding: 0 var(--gutter) clamp(4rem, 9vw, 8rem); }
+.board {
+  max-width: 1180px; margin: 0 auto;
+  background: var(--pine); color: var(--steam);
+  border-radius: 6px;
+  padding: clamp(2rem, 5vw, 4rem) clamp(1.25rem, 5vw, 4.5rem);
+  outline: 10px solid #6f4b32; /* 나무 테두리 */
+  outline-offset: -2px;
+  position: relative;
+}
+.board::before, .board::after { /* 판을 건 못 두 개 */
+  content: ""; position: absolute; top: -26px; width: 14px; height: 14px;
+  border-radius: 50%; background: var(--yolk); border: 3px solid #6f4b32;
+}
+.board::before { left: 18%; }
+.board::after { right: 18%; }
+.board__title {
+  font-weight: 900; font-size: clamp(2.75rem, 7vw, 5rem); color: var(--yolk);
+  letter-spacing: .4em; margin-right: -.4em; text-align: center;
+}
+.board__note { text-align: center; max-width: 34em; margin: .75rem auto 0; color: color-mix(in srgb, var(--steam) 75%, var(--pine)); font-size: var(--step--1); }
+.board__cols {
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2.5rem clamp(1.5rem, 3.5vw, 3.5rem); margin-top: clamp(2rem, 5vw, 3.5rem);
+}
+.board__col h3 {
+  font-weight: 500; font-size: var(--step-1); color: var(--jade-soft);
+  padding-bottom: .5rem; margin-bottom: .5rem;
+  border-bottom: 2px solid color-mix(in srgb, var(--steam) 25%, transparent);
+}
+.board__col ul { list-style: none; margin: 0; padding: 0; }
+.board__col li {
+  display: flex; align-items: baseline; gap: .75rem;
+  padding: .9rem 0;
+  border-bottom: 1px dashed color-mix(in srgb, var(--steam) 20%, transparent);
+}
+.item { flex: 1; font-family: var(--display); font-weight: 500; font-size: 1.125rem; line-height: 1.35; }
+.item small { display: block; font-family: var(--body); font-weight: 400; font-size: var(--step--1); color: color-mix(in srgb, var(--steam) 65%, var(--pine)); margin-top: .2rem; }
+.price { font-family: var(--display); font-weight: 800; font-size: 1.25rem; color: var(--yolk); font-variant-numeric: tabular-nums; }
+.board__foot { margin-top: 2rem; text-align: center; font-size: var(--step--1); color: var(--jade-soft); }
+
+/* ---------- 공간 ---------- */
+.space { padding: 0 var(--gutter) clamp(4rem, 9vw, 8rem); max-width: 1280px; margin: 0 auto; }
+.space__head { max-width: 38rem; margin-bottom: clamp(2rem, 5vw, 3.5rem); }
+.space__head h2, .visit h2 { font-weight: 800; font-size: var(--step-3); letter-spacing: -.02em; margin-bottom: 1rem; }
+.space__head p { color: var(--ink-soft); }
+
+.rooms {
+  display: grid; gap: clamp(1.5rem, 3vw, 2.5rem);
+  grid-template-columns: 1.25fr 1fr 1fr;
+  align-items: start;
+}
+.room { background: var(--steam); border: 2px solid var(--pine); border-radius: 14px; overflow: hidden; }
+.room h3, .room p { padding: 0 1.25rem; }
+.room h3 { font-weight: 800; font-size: var(--step-1); margin: 1.25rem 0 .5rem; }
+.room p { font-size: .9875rem; color: var(--ink-soft); padding-bottom: 1.5rem; }
+.room__tile { border-bottom: 2px solid var(--pine); }
+
+/* 자리마다 다른 타일 */
+.room--warm .room__tile {
+  aspect-ratio: 5 / 4;
+  background:
+    radial-gradient(circle at 50% 120%, var(--yolk) 0 38%, var(--pine) 38% 39.5%, transparent 39.5%),
+    linear-gradient(#f0c5b7 2px, transparent 2px) 0 0 / 22px 22px,
+    linear-gradient(90deg, #f0c5b7 2px, transparent 2px) 0 0 / 22px 22px,
+    #f9e3db;
+}
+.room--cold { margin-top: clamp(0rem, 6vw, 5rem); }
+.room--cold .room__tile {
+  aspect-ratio: 1;
+  background:
+    linear-gradient(var(--steam) 3px, transparent 3px) 0 0 / 14px 14px,
+    linear-gradient(90deg, var(--steam) 3px, transparent 3px) 0 0 / 14px 14px,
+    var(--jade);
+}
+.room--boiler .room__tile {
+  aspect-ratio: 4 / 3;
+  background:
+    repeating-linear-gradient(90deg, transparent 0 46px, var(--pine) 46px 48px),
+    repeating-linear-gradient(0deg, #8a5a3c 0 22px, #7a4e33 22px 24px),
+    #8a5a3c;
+  background-position: 0 0, 0 0;
+}
+
+.lockers {
+  margin-top: clamp(2.5rem, 6vw, 4rem);
+  display: flex; align-items: center; gap: 1.25rem;
+  max-width: 44rem;
+}
+.lockers::before {
+  content: "17"; flex: none;
+  display: grid; place-items: center;
+  width: 3.5rem; height: 4.5rem; border-radius: 8px 8px 22px 22px;
+  background: var(--yolk); border: 2px solid var(--pine);
+  font-family: var(--display); font-weight: 800; font-size: 1.375rem;
+}
+.lockers p { color: var(--ink-soft); }
+
+/* ---------- 오시는 길 ---------- */
+.visit {
+  display: grid; grid-template-columns: auto minmax(0, 1fr);
+  gap: clamp(1.5rem, 6vw, 6rem);
+  padding: clamp(3.5rem, 8vw, 7rem) var(--gutter);
+  border-top: 2px solid var(--grout);
+  background-color: var(--steam);
+}
+.visit__chimney {
+  display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
+  gap: .25rem;
+  width: clamp(4.5rem, 9vw, 7rem);
+  padding: 1.25rem 0 6rem;
+  background:
+    repeating-linear-gradient(0deg, #b9644c 0 26px, var(--steam) 26px 29px);
+  border: 3px solid var(--pine); border-bottom: 0;
+  border-radius: 6px 6px 0 0;
+  align-self: stretch;
+}
+.visit__chimney span {
+  font-family: var(--display); font-weight: 900; font-size: clamp(2rem, 4.5vw, 3.25rem);
+  color: var(--steam); background: var(--pine);
+  width: 100%; text-align: center; line-height: 1.3;
+}
+.visit__body { max-width: 50rem; }
+.visit__lead { color: var(--ink-soft); max-width: 34em; }
+.visit__grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 2rem 3rem; margin-top: 2.5rem;
+}
+.visit__grid h3 { font-weight: 800; font-size: 1.125rem; margin-bottom: .5rem; }
+.hours { border-collapse: collapse; width: 100%; }
+.hours th, .hours td { text-align: left; padding: .5rem 0; border-bottom: 1px solid var(--grout); vertical-align: top; }
+.hours th { font-weight: 400; color: var(--ink-soft); width: 5.5rem; }
+.visit__small { margin-top: .75rem; font-size: var(--step--1); color: var(--ink-soft); }
+
+/* ---------- 바닥 ---------- */
+.foot {
+  background: var(--pine); color: color-mix(in srgb, var(--steam) 80%, var(--pine));
+  padding: 2rem var(--gutter); font-size: var(--step--1);
+  display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem 2rem;
+}
+.foot strong { color: var(--yolk); font-family: var(--display); margin-right: .5rem; }
+
+/* ---------- 좁은 화면 ---------- */
+@media (max-width: 900px) {
+  .board__cols { grid-template-columns: 1fr; max-width: 32rem; margin-left: auto; margin-right: auto; }
+  .rooms { grid-template-columns: 1fr 1fr; }
+  .room--warm { grid-column: 1 / -1; }
+  .room--warm .room__tile { aspect-ratio: 2 / 1; }
+  .room--cold { margin-top: 0; }
+}
+@media (max-width: 640px) {
+  .hero {
+    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-areas: "sign temp" "body body";
+    gap: 2rem 1.25rem;
+    padding-top: 4.5rem;
+  }
+  .hero__sign { padding: 1.75rem .8rem 1rem; box-shadow: 6px 6px 0 var(--pine); }
+  .hero__sign h1 { font-size: 4.5rem; }
+  .hero__temp { flex-direction: column; align-self: end; gap: .6rem; }
+  .hero__temp > div { flex-direction: column; align-items: flex-start; gap: .25rem; }
+  .hero__body { padding-top: 0; }
+  .rooms { grid-template-columns: 1fr; }
+  .visit { grid-template-columns: 1fr; }
+  .visit__chimney { flex-direction: row; width: auto; padding: 0; align-self: start; border: 3px solid var(--pine); border-radius: 6px; overflow: hidden; }
+  .visit__chimney span { width: auto; padding: .1rem .9rem; }
+  .board::before { left: 12%; }
+  .board::after { right: 12%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .steam path { animation: none; stroke-dashoffset: 0; }
+  .btn { transition: none; }
+}

@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>온탕 — 목욕탕이었던 커피집</title>
+  <meta name="description" content="부산 영도, 45년 된 동네 목욕탕을 고쳐 만든 커피집 온탕. 탕 안에 앉아 따뜻한 커피를 마시는 곳.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Hahmlet:wght@300;500;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <a class="skip" href="#main">본문으로 건너뛰기</a>
+
+  <header class="top">
+    <a class="top__mark" href="#main" aria-label="온탕 처음으로">
+      <svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="27" r="9"/><path d="M14 15c-3-4 3-6 0-10M20 15c-3-4 3-6 0-10M26 15c-3-4 3-6 0-10"/></svg>
+      온탕
+    </a>
+    <nav class="top__nav" aria-label="주요 메뉴">
+      <a href="#menu">요금표</a>
+      <a href="#space">공간</a>
+      <a href="#visit">오시는 길</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- 히어로: 목욕탕 굴뚝 간판처럼 세로로 선 이름 -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero__sign">
+        <h1 id="hero-title">온탕</h1>
+        <svg class="steam" viewBox="0 0 120 160" aria-hidden="true">
+          <path d="M30 150c-18-24 18-38 0-62s18-38 0-62"/>
+          <path d="M60 150c-18-24 18-38 0-62s18-38 0-62"/>
+          <path d="M90 150c-18-24 18-38 0-62s18-38 0-62"/>
+        </svg>
+      </div>
+
+      <div class="hero__body">
+        <p class="hero__since">1978년부터 2023년까지는 목욕탕이었습니다</p>
+        <p class="hero__lead">물은 이제 안 데웁니다.<br>커피만 데웁니다.</p>
+        <p class="hero__text">부산 영도 언덕배기, 동네 사람들이 45년 동안 몸을 녹이던 목욕탕을 고쳐 커피집을 열었습니다. 타일도, 탕도, 신발장도 그대로 두었어요. 이제는 탕 안에 앉아 따뜻한 잔을 손에 쥐고 몸을 녹이면 됩니다.</p>
+        <div class="hero__cta">
+          <a class="btn btn--yolk" href="#visit">오시는 길 보기</a>
+          <a class="btn btn--line" href="#menu">요금표 보기</a>
+        </div>
+      </div>
+
+      <dl class="hero__temp" aria-label="온도 안내">
+        <div><dt>그때 탕 온도</dt><dd>42<span>℃</span></dd></div>
+        <div><dt>지금 추출 온도</dt><dd>92<span>℃</span></dd></div>
+      </dl>
+    </section>
+
+    <!-- 요금표: 목욕탕 카운터 위에 걸려 있던 판 그대로 -->
+    <section class="menu" id="menu" aria-labelledby="menu-title">
+      <div class="board">
+        <h2 id="menu-title" class="board__title">요금표</h2>
+        <p class="board__note">카운터 위에 걸려 있던 판을 그대로 쓰고 있어요. 입욕료 자리에 커피값을 적었습니다.</p>
+
+        <div class="board__cols">
+          <div class="board__col">
+            <h3>따뜻한 것</h3>
+            <ul>
+              <li><span class="item">온탕 라떼<small>흑당을 녹인 우유에 진한 에스프레소</small></span><span class="price">5,800</span></li>
+              <li><span class="item">때밀이 블렌드<small>묵직하고 고소한 오늘의 드립</small></span><span class="price">5,000</span></li>
+              <li><span class="item">쑥 우유차<small>영도 할머니 밭에서 온 쑥</small></span><span class="price">5,500</span></li>
+            </ul>
+          </div>
+          <div class="board__col">
+            <h3>차가운 것</h3>
+            <ul>
+              <li><span class="item">목욕 끝 바나나<small>바나나우유 크림을 올린 콜드브루</small></span><span class="price">6,200</span></li>
+              <li><span class="item">냉탕 식혜 브루<small>직접 삭힌 식혜와 콜드브루를 반반</small></span><span class="price">6,000</span></li>
+              <li><span class="item">냉탕 아메리카노<small>얼음은 넉넉하게</small></span><span class="price">4,800</span></li>
+            </ul>
+          </div>
+          <div class="board__col">
+            <h3>곁들이는 것</h3>
+            <ul>
+              <li><span class="item">맥반석 구운 달걀<small>두 알, 소금 한 꼬집</small></span><span class="price">2,500</span></li>
+              <li><span class="item">쑥 스콘<small>오전에 구워 금방 떨어져요</small></span><span class="price">4,200</span></li>
+              <li><span class="item">수건 케이크<small>돌돌 만 롤케이크, 하루 12조각</small></span><span class="price">5,500</span></li>
+            </ul>
+          </div>
+        </div>
+        <p class="board__foot">어린이 손님에게는 바나나우유를 반값에 드려요.</p>
+      </div>
+    </section>
+
+    <!-- 공간 -->
+    <section class="space" id="space" aria-labelledby="space-title">
+      <div class="space__head">
+        <h2 id="space-title">탕은 그대로, 물만 뺐습니다</h2>
+        <p>예전 목욕탕의 자리를 하나도 허물지 않았어요. 어디에 앉느냐에 따라 커피집이 조금씩 달라집니다.</p>
+      </div>
+
+      <div class="rooms">
+        <article class="room room--warm">
+          <div class="room__tile" aria-hidden="true"></div>
+          <h3>온탕석</h3>
+          <p>물을 뺀 둥근 온탕에 방석을 깔았습니다. 탕 가장자리에 등을 기대고 앉는 열두 자리. 바닥 난방이 아직 돌아가서 겨울에 가장 먼저 찹니다.</p>
+        </article>
+        <article class="room room--cold">
+          <div class="room__tile" aria-hidden="true"></div>
+          <h3>냉탕석</h3>
+          <p>옥색 타일이 깔린 작은 냉탕은 둘이 마주 앉는 자리가 됐어요. 창이 북쪽이라 오후에도 빛이 부드럽습니다. 혼자 책 읽기 좋은 곳.</p>
+        </article>
+        <article class="room room--boiler">
+          <div class="room__tile" aria-hidden="true"></div>
+          <h3>보일러실</h3>
+          <p>물을 데우던 보일러실에서 이제 원두를 볶습니다. 화요일과 금요일 오전에 볶는 날이면 골목 끝까지 냄새가 내려가요.</p>
+        </article>
+      </div>
+
+      <aside class="lockers" aria-label="신발장 안내">
+        <p>들어오실 때 옛 신발장에 신발을 넣어주세요. 열쇠 번호표는 그대로 주문 번호가 됩니다.</p>
+      </aside>
+    </section>
+
+    <!-- 오시는 길 -->
+    <section class="visit" id="visit" aria-labelledby="visit-title">
+      <div class="visit__chimney" aria-hidden="true">
+        <span>온</span><span>탕</span>
+      </div>
+      <div class="visit__body">
+        <h2 id="visit-title">굴뚝을 보고 오세요</h2>
+        <p class="visit__lead">영도대교를 건너 언덕을 오르면 붉은 글씨가 남은 굴뚝이 보입니다. 그 아래가 온탕이에요.</p>
+
+        <div class="visit__grid">
+          <div>
+            <h3>주소</h3>
+            <p>부산 영도구 물결로 17<br>남포역에서 버스 7번, 물결고개 정류장 하차 후 걸어서 3분</p>
+          </div>
+          <div>
+            <h3>여는 시간</h3>
+            <table class="hours">
+              <tbody>
+                <tr><th scope="row">수–월</th><td>오전 6:30 – 오후 6:00</td></tr>
+                <tr><th scope="row">화요일</th><td>쉽니다</td></tr>
+              </tbody>
+            </table>
+            <p class="visit__small">목욕탕이 그랬듯 새벽에 문을 엽니다. 마지막 주문은 문 닫기 30분 전.</p>
+          </div>
+        </div>
+
+        <div class="visit__cta">
+          <a class="btn btn--yolk" href="tel:051-000-0042">전화로 자리 묻기</a>
+          <a class="btn btn--line" href="#menu">요금표 다시 보기</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <p><strong>온탕</strong> 부산 영도구 물결로 17, 051-000-0042</p>
+    <p>목욕탕 온천장(1978–2023)의 자리를 이어 씁니다.</p>
+  </footer>
+</body>
+</html>
