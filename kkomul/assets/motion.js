@@ -60,7 +60,8 @@
 
   // ── ② 세 걸음: 카드는 차례로, 아이콘은 서로 다른 깊이로 ──
   reveal($$('.step'), '.steps', { stagger: 0.18 });
-  $$('.step__icon').forEach((icon, i) => parallax(icon, 0.35 + i * 0.25, '.steps'));
+  $$('.step__icon').forEach((icon, i) => parallax(icon, 0.35 + i * 0.2, '.steps'));
+  reveal($$('.month-flow__title, .month-flow__list li, .month-flow__foot'), '.month-flow', { y: 24, stagger: 0.08 });
 
   // ── ③ 샘플: 탭과 카드 ───────────────────────────────────
   reveal($$('.tabs, .samples__stage'), '.tabs', { stagger: 0.15 });
@@ -81,6 +82,10 @@
   // ── ⑤ 정보 보호: 카드는 차례로, 아이콘은 둥실 ───────────
   reveal($$('.safe__item'), '.safe', { stagger: 0.15 });
   $$('.safe__item svg').forEach((icon, i) => parallax(icon, 0.3 + (i % 2) * 0.3, '.safe'));
+
+  // ── 요금제: 카드가 차례로, 추천 카드는 살짝 늦게 ─────────
+  reveal($$('.plan'), '.plans', { stagger: 0.14 });
+  reveal($$('.addon'), '.addon', { y: 30 });
 
   // ── ⑥ FAQ ──────────────────────────────────────────────
   reveal($$('.faq details, .faq__more'), '.faq', { y: 30, stagger: 0.08 });
