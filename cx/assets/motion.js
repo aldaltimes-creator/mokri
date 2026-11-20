@@ -536,16 +536,16 @@
     }
   });
 
-  /* ---------- 6. 다짐 문장: 스크롤을 따라 단어가 하나씩 진하게 채워짐 (핵심 구절은 민트로) ---------- */
+  /* ---------- 6. 다짐 문장: 화면에 들어오면 단어가 하나씩 진하게 채워짐 (핵심 구절은 민트로)
+     스크롤 위치에 묶지 않고, 한 번 들어오면 같은 속도로 끝까지 채워짐 ---------- */
   var mf = $('.mf-text');
   if (mf && hasSplit) {
     var mfSplit = new SplitText(mf, { type: 'words', wordsClass: 'w' });
-    var mfTl = gsap.timeline({
-      scrollTrigger: { trigger: mf, start: 'top 80%', end: 'bottom 45%', scrub: 0.5 }
-    });
+    var mfTl = gsap.timeline({ paused: true });
     mfSplit.words.forEach(function (w, i) {
-      mfTl.to(w, { color: w.closest('em') ? '#0A8A66' : '#12302B', duration: 1, ease: 'none' }, i * 0.35);
+      mfTl.to(w, { color: w.closest('em') ? '#0A8A66' : '#12302B', duration: 0.45, ease: 'power1.out' }, i * 0.11);
     });
+    ScrollTrigger.create({ trigger: mf, start: 'top 75%', once: true, onEnter: function () { mfTl.play(); } });
     gsap.from('.mf-label', { x: -20, autoAlpha: 0, duration: 0.8, ease: 'power3.out', scrollTrigger: { trigger: '.manifesto', start: 'top 80%' } });
   }
 
