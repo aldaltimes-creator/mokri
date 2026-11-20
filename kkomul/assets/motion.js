@@ -58,10 +58,28 @@
     parallax(head, 0.25, head.closest('section'));
   });
 
+  // ── 힘들어하는 것 → 좋아하는 것: 카드는 차례로, 그림은 살짝 다른 깊이로 ──
+  reveal($$('.use-tabs'), '.use-tabs', { y: 24 });
+  reveal($$('#use-1 > .use-panel__title, #use-1 > .use-panel__lead'), '#use-1', { y: 24 });
+  reveal($$('.worry'), '.worries', { stagger: 0.16 });
+  // 그림 틀은 그대로 두고 안쪽 그림만 움직여 창문 너머로 보이는 듯한 깊이감
+  $$('.worry__art > *, .usecase__art > *').forEach((pic) => {
+    gsap.set(pic, { scale: 1.1 });
+    gsap.fromTo(pic, { yPercent: -4 }, {
+      yPercent: 4, ease: 'none',
+      scrollTrigger: { trigger: pic.parentNode, start: 'top bottom', end: 'bottom top', scrub: true },
+    });
+  });
+
   // ── ② 세 걸음: 카드는 차례로, 아이콘은 서로 다른 깊이로 ──
   reveal($$('.step'), '.steps', { stagger: 0.18 });
-  $$('.step__icon').forEach((icon, i) => parallax(icon, 0.35 + i * 0.2, '.steps'));
-  reveal($$('.month-flow__title, .month-flow__list li, .month-flow__foot'), '.month-flow', { y: 24, stagger: 0.08 });
+  // 단계 그림 속 작은 화면은 카드보다 살짝 늦게, 서로 다른 깊이로 떠오름
+  $$('.mini').forEach((m, i) => parallax(m, 0.06 + i * 0.03, '.steps'));
+  reveal($$('.how-nav'), '.how-nav', { y: 20 });
+  // 2장(11월 예시)을 열 때 날짜 카드가 차례로 들어오게
+  document.querySelector('.how-pager [data-next]')?.addEventListener('click', () => {
+    gsap.from('.month-flow__list li', { y: 24, autoAlpha: 0, duration: 0.6, ease: 'power3.out', stagger: 0.08, clearProps: 'all' });
+  });
 
   // ── ③ 샘플: 탭과 카드 ───────────────────────────────────
   reveal($$('.tabs, .samples__stage'), '.tabs', { stagger: 0.15 });

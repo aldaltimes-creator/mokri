@@ -63,6 +63,7 @@
         꼬물상자
       </a>
       <nav class="top__nav" aria-label="주요 메뉴">
+        <a href="#uses">활용 예시</a>
         <a href="#how">사용 방법</a>
         <a href="#samples">미리보기</a>
         <a href="#album">앨범 기록</a>
@@ -86,7 +87,7 @@
         <div class="hero__text">
           <p class="eyebrow">아이를 위한 이야기 구독</p>
           <h1 class="hero__title">이번 이야기의<br>주인공은 <em>우리 아이</em>예요</h1>
-          <p class="hero__lead">한 달에 3~4번, 사진과 그날 있었던 일을 앨범에 남겨 주세요. 그 이야기로 아이가 주인공인 동화와 노래를 만들어 드려요.</p>
+          <p class="hero__lead">한 달에 3~4번, 사진과 그날 있었던 일을 앨범에 남겨 주세요. 양치, 숫자, 단추처럼 아이가 힘들어하는 것도 아이가 좋아하는 것으로 풀어낸 동화와 노래로 만들어 드려요.</p>
           <div class="hero__cta">
             <a class="btn btn--primary" href="#pricing">체험권으로 시작하기</a>
             <a class="btn btn--ghost" href="#how">사용 방법 보기</a>
@@ -105,55 +106,277 @@
       </div>
     </section>
 
-    <!-- ② 이렇게 만들어져요 -->
+    <!-- ①-1 활용 예시 5가지 -->
+    <section class="section section--tint" id="uses" aria-labelledby="uses-title">
+      <div class="wrap">
+        <header class="section__head">
+          <p class="eyebrow">이렇게 활용해요</p>
+          <h2 id="uses-title" class="section__title">기록 하나로,<br>이런 동화와 노래가 돼요</h2>
+          <p class="section__lead">아이의 하루를 몇 줄 적어 두면, 그날에 꼭 맞는 이야기로 만들어 드려요.</p>
+        </header>
+
+        <div class="use-tabs" role="tablist" aria-label="활용 예시">
+          <button class="use-tab" role="tab" id="use-tab-1" aria-controls="use-1" aria-selected="true"><b>1</b>힘들어하는 것</button>
+          <button class="use-tab" role="tab" id="use-tab-2" aria-controls="use-2" aria-selected="false" tabindex="-1"><b>2</b>행복한 순간</button>
+          <button class="use-tab" role="tab" id="use-tab-3" aria-controls="use-3" aria-selected="false" tabindex="-1"><b>3</b>친구들과 나들이</button>
+          <button class="use-tab" role="tab" id="use-tab-4" aria-controls="use-4" aria-selected="false" tabindex="-1"><b>4</b>새로운 변화</button>
+          <button class="use-tab" role="tab" id="use-tab-5" aria-controls="use-5" aria-selected="false" tabindex="-1"><b>5</b>생일·기념일</button>
+        </div>
+
+        <!-- 1. 힘들어하는 것 -->
+        <div class="use-panel" role="tabpanel" id="use-1" aria-labelledby="use-tab-1">
+          <h3 class="use-panel__title">아이가 힘들어하는 것을 좋아하는 것으로 바꿔요</h3>
+          <p class="use-panel__lead">요즘 아이가 싫어하거나 무서워하는 걸 적어 주세요. 아이가 좋아하는 것을 앞세워, 즐겁게 따라 하고 싶어지는 동화로 만들어 드려요.</p>
+        <ul class="worries">
+          <li class="worry">
+            <div class="worry__art">
+              <img src="assets/img/story-1-no-brushing.jpg" width="1600" height="1000" loading="lazy"
+                   alt="양치를 싫어해 고개를 돌린 이안이와 세면대 위의 장난감 빵빵이">
+            </div>
+            <dl class="worry__flow">
+              <div><dt class="worry__tag worry__tag--no">힘들어해요</dt><dd>양치하기 싫어요</dd></div>
+              <div><dt class="worry__tag worry__tag--yes">좋아해요</dt><dd>소방차 빵빵이</dd></div>
+            </dl>
+            <h3 class="worry__title">「빵빵이와 반짝반짝 양치 출동」</h3>
+            <p class="worry__line">“이안아, 나랑 같이 쓱싹쓱싹 하자!”</p>
+            <p class="worry__gain">빵빵이를 따라 하며 스스로 이를 닦아요</p>
+          </li>
+
+          <li class="worry">
+            <div class="worry__art">
+              <img src="assets/img/story-numbers-train.jpg" width="1280" height="800" loading="lazy"
+                   alt="풀밭에 앉은 이안이가 손가락으로 가리키며, 숫자 1부터 4가 실린 네 칸 기차를 세고 있어요">
+            </div>
+            <dl class="worry__flow">
+              <div><dt class="worry__tag worry__tag--no">힘들어해요</dt><dd>숫자가 싫어요</dd></div>
+              <div><dt class="worry__tag worry__tag--yes">좋아해요</dt><dd>칙칙폭폭 기차</dd></div>
+            </dl>
+            <h3 class="worry__title">「칙칙폭폭, 이안이 기차는 몇 칸?」</h3>
+            <p class="worry__line">“하나, 둘, 셋, 넷! 우리 기차가 네 칸이 됐어!”</p>
+            <p class="worry__gain">기차 칸을 하나씩 세며 1부터 5까지 익혀요</p>
+          </li>
+
+          <li class="worry">
+            <div class="worry__art">
+              <img src="assets/img/story-buttons-pop.jpg" width="1280" height="800" loading="lazy"
+                   alt="이안이가 빨간 단추를 들고 신기해하는 사이, 다른 단추들이 날아올라 기차 연기와 웃는 파인애플로 변해요">
+            </div>
+            <dl class="worry__flow">
+              <div><dt class="worry__tag worry__tag--no">힘들어해요</dt><dd>단추가 무서워요</dd></div>
+              <div><dt class="worry__tag worry__tag--yes">좋아해요</dt><dd>기차, 파인애플</dd></div>
+            </dl>
+            <h3 class="worry__title">「단추가 퐁! 변했어요」</h3>
+            <p class="worry__line">“동글동글 단추가 퐁! 하얀 기차 연기가 됐어요.”</p>
+            <p class="worry__gain">무섭던 단추를 만져 보고 직접 채워 봐요</p>
+          </li>
+        </ul>
+        <p class="worries__more">편식, 낯가림, 배변 훈련, 속상한 마음처럼 아이마다 다른 고민도 기록에 적어 주시면 돼요.</p>
+        </div>
+
+        <!-- 2. 행복한 순간 -->
+        <div class="use-panel" role="tabpanel" id="use-2" aria-labelledby="use-tab-2" hidden>
+          <article class="usecase">
+            <div class="usecase__art">
+              <img src="assets/img/use-giraffe.jpg" width="1280" height="800" loading="lazy"
+                   alt="놀이공원 사파리에서 아빠 어깨 위에 올라 키 큰 기린을 올려다보며 웃는 이안이">
+            </div>
+            <div class="usecase__body">
+              <h3 class="use-panel__title">아이가 행복해하는 순간을 노래와 동화로 남겨요</h3>
+              <p class="use-panel__lead">사진으로는 다 담기지 않는 그날의 신남을, 언제든 다시 듣는 노래로 만들어요.</p>
+              <div class="record">
+                <p class="record__label">부모가 남긴 기록 · 11월 8일</p>
+                <p class="record__text">에버랜드에서 처음으로 기린을 봤어요. 고개를 한껏 젖히고 한참을 올려다봤어요.</p>
+                <p class="record__quote">“기린 커! 키 커!”</p>
+              </div>
+              <div class="result">
+                <p class="result__type">노래</p>
+                <p class="result__title">「키다리 기린아, 안녕」</p>
+                <p class="result__line">키다리 기린아 안녕, 하늘까지 닿은 목<br>이안이도 까치발로 쭉쭉 키가 자라요</p>
+              </div>
+              <p class="worry__gain">가장 신났던 날이 아이만의 노래로 남아요</p>
+            </div>
+          </article>
+        </div>
+
+        <!-- 3. 친구들과 나들이 -->
+        <div class="use-panel" role="tabpanel" id="use-3" aria-labelledby="use-tab-3" hidden>
+          <article class="usecase">
+            <div class="usecase__art">
+              <img src="assets/img/use-kids-pool.jpg" width="1280" height="800" loading="lazy"
+                   alt="키즈카페 실내 풀장에서 튜브를 타고 친구와 물장구치며 웃는 이안이">
+            </div>
+            <div class="usecase__body">
+              <h3 class="use-panel__title">어린이집 친구들과 놀러 간 날을 기록해요</h3>
+              <p class="use-panel__lead">키즈카페, 소풍, 생일 파티처럼 친구들과 함께한 날을 친구 이름이 들어간 동화로 만들어요.</p>
+              <div class="record">
+                <p class="record__label">부모가 남긴 기록 · 11월 18일</p>
+                <p class="record__text">어린이집 친구들과 풀장이 있는 키즈카페에 갔어요. 서아랑 튜브 타고 한참 물장구를 쳤어요.</p>
+                <p class="record__quote">“서아야, 첨벙첨벙!”</p>
+              </div>
+              <div class="result">
+                <p class="result__type">동화</p>
+                <p class="result__title">「첨벙첨벙, 우리 반 물놀이 대장」</p>
+                <p class="result__line">이안이와 서아가 “첨벙!” 물장구를 치자<br>반짝반짝 물방울 무지개가 떴어요.</p>
+              </div>
+              <p class="worry__gain">함께 놀았던 친구를 이야기 속에서 다시 만나요</p>
+              <p class="usecase__note">친구 이름은 보호자가 직접 적을 때만 동화에 들어가요.</p>
+            </div>
+          </article>
+        </div>
+
+        <!-- 4. 새로운 변화 -->
+        <div class="use-panel" role="tabpanel" id="use-4" aria-labelledby="use-tab-4" hidden>
+          <article class="usecase">
+            <div class="usecase__art">
+              <img src="assets/img/use-stairs.jpg" width="1280" height="800" loading="lazy"
+                   alt="난간을 잡고 혼자 계단을 한 칸씩 올라가며 뿌듯하게 웃는 이안이와 위에서 응원하는 빵빵이">
+            </div>
+            <div class="usecase__body">
+              <h3 class="use-panel__title">새로 해 보는 일을 동화로 응원해요</h3>
+              <p class="use-panel__lead">혼자 계단 오르기, 컵으로 마시기처럼 처음 도전하는 일을 동화 속에서 먼저 해 봐요.</p>
+              <div class="record">
+                <p class="record__label">부모가 남긴 기록 · 11월 24일</p>
+                <p class="record__text">계단 앞에서 늘 손을 잡아 달라던 이안이가, 오늘은 난간을 잡고 혼자 세 칸을 올라갔어요!</p>
+                <p class="record__quote">“이안이 혼자!”</p>
+              </div>
+              <div class="result">
+                <p class="result__type">동화</p>
+                <p class="result__title">「하나 둘, 빵빵이와 계단 오르기」</p>
+                <p class="result__line">빵빵이가 사다리를 오르듯 “하나, 둘, 셋!”<br>이안이도 한 칸씩 씩씩하게 올라갔어요.</p>
+              </div>
+              <p class="worry__gain">혼자 해냈다는 자신감이 쑥쑥 자라요</p>
+            </div>
+          </article>
+        </div>
+
+        <!-- 5. 생일·기념일 -->
+        <div class="use-panel" role="tabpanel" id="use-5" aria-labelledby="use-tab-5" hidden>
+          <article class="usecase">
+            <div class="usecase__art">
+              <img src="assets/img/use-mom-birthday.jpg" width="1280" height="800" loading="lazy"
+                   alt="촛불 켠 생일 케이크 앞에서 활짝 웃는 엄마에게 분홍 꽃 한 송이를 건네는 이안이">
+            </div>
+            <div class="usecase__body">
+              <h3 class="use-panel__title">생일과 기념일을 한 권의 책으로 남겨요</h3>
+              <p class="use-panel__lead">그날 기록으로 만든 동화를 하드북으로 받아, 가족 선물로 간직할 수 있어요.</p>
+              <div class="record">
+                <p class="record__label">부모가 남긴 기록 · 11월 26일</p>
+                <p class="record__text">엄마 생일이에요. 이안이가 아빠랑 몰래 준비한 꽃을 건네고, 촛불을 같이 “후~” 불었어요.</p>
+                <p class="record__quote">“엄마 생일 축하해! 사랑해!”</p>
+              </div>
+              <div class="result">
+                <p class="result__type">동화 → 하드북</p>
+                <p class="result__title">「빵빵이와 준비한 엄마 생일 선물」</p>
+                <p class="result__line">하드커버 그림책으로 만들어 집으로 보내 드려요.<br>1권 35,000원</p>
+              </div>
+              <p class="worry__gain">특별한 날이 책장에 꽂아 두는 그림책이 돼요</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ② 사용 방법 -->
     <section class="section" id="how" aria-labelledby="how-title">
       <div class="wrap">
         <header class="section__head">
           <p class="eyebrow">사용 방법</p>
           <h2 id="how-title" class="section__title">기록하면, 이야기가 돼요</h2>
-          <p class="section__lead">처음 한 번 아이를 소개하고, 그다음부터는 한 달에 3~4번 기록만 남기면 돼요.</p>
+          <p class="section__lead">딱 4단계면 돼요.</p>
         </header>
+        <div class="how-pager" data-pager>
+        <!-- 1장: 4단계 -->
+        <div class="how-page is-active" data-page aria-label="사용 방법 4단계">
         <ol class="steps">
           <li class="step">
             <span class="step__num">1</span>
-            <svg class="step__icon" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="18" r="9"/><path d="M8 42c2-9 8-14 16-14s14 5 16 14"/></svg>
-            <h3>아이 소개하기</h3>
-            <p>이름, 생일, 좋아하는 것과 가족 호칭을 알려 주세요. 처음 한 번만 하면 돼요.</p>
-            <p class="step__when">가입할 때 한 번</p>
+            <!-- 그림: 아이 프로필 카드 -->
+            <div class="step__visual" aria-hidden="true">
+              <div class="mini mini--profile">
+                <img class="mini__avatar" src="assets/img/album-playground.jpg" width="600" height="600" loading="lazy" alt="">
+                <p class="mini__name">이안 <span>22개월</span></p>
+                <p class="mini__chips"><span>소방차</span><span>기차</span><span>빨간색</span></p>
+              </div>
+            </div>
+            <h3>아이 소개</h3>
+            <p>이름과 좋아하는 것을 알려 주세요.</p>
+            <p class="step__when">처음 한 번</p>
           </li>
           <li class="step">
             <span class="step__num">2</span>
-            <svg class="step__icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M8 12h32v26H8z"/><path d="m8 32 10-10 8 8 5-5 9 9"/><circle cx="31" cy="19" r="3"/></svg>
-            <h3>앨범에 기록하기</h3>
-            <p>사진과 함께 그날 무슨 일이 있었는지, 아이가 어떤 말을 했는지 몇 줄 적어 주세요.</p>
-            <p class="step__when">한 달에 3~4번</p>
+            <!-- 그림: 기록 한 장 -->
+            <div class="step__visual" aria-hidden="true">
+              <div class="mini mini--record">
+                <img src="assets/img/album-firestation.jpg" width="600" height="600" loading="lazy" alt="">
+                <div>
+                  <p class="mini__date">11.15</p>
+                  <p class="mini__title">소방서 구경</p>
+                  <p class="mini__quote">“엄마, 빵빵!”</p>
+                </div>
+              </div>
+            </div>
+            <h3>오늘 기록</h3>
+            <p>사진과 오늘 있었던 일을 적어요.</p>
+            <p class="step__when">한 달 3~4번</p>
           </li>
           <li class="step">
             <span class="step__num">3</span>
-            <svg class="step__icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M10 8h22l6 6v26H10z"/><path d="M17 20h14M17 27h14M17 34h8"/></svg>
+            <!-- 그림: 버튼 하나로 동화·노래 -->
+            <div class="step__visual" aria-hidden="true">
+              <div class="mini mini--make">
+                <div class="mini__thumb">
+                  <img src="assets/img/story-1-no-brushing.jpg" width="1600" height="1000" loading="lazy" alt="">
+                  <span>동화</span>
+                </div>
+                <div class="mini__thumb">
+                  <img src="assets/img/song-cover.jpg" width="600" height="600" loading="lazy" alt="">
+                  <span>노래</span>
+                </div>
+              </div>
+            </div>
             <h3>동화·노래 받기</h3>
-            <p>기록 하나를 골라 ‘동화로’ 또는 ‘노래로’를 누르면, 그날 이야기로 아이가 주인공인 작품이 완성돼요.</p>
-            <p class="step__when">월간 구독은 매달 동화 3편 · 노래 3곡</p>
+            <p>기록을 고르고 버튼만 누르면 끝.</p>
+            <p class="step__when">매달 동화 3 · 노래 3</p>
           </li>
           <li class="step">
             <span class="step__num">4</span>
-            <svg class="step__icon" viewBox="0 0 48 48" aria-hidden="true"><path d="m24 7 5 10.5 11.5 1.6-8.3 8 2 11.4L24 33l-10.2 5.5 2-11.4-8.3-8L19 17.5z"/></svg>
-            <h3>이달의 순간 남기기</h3>
-            <p>이번 달 가장 좋아한 말, 처음 한 말, 처음 한 행동을 적어 두면 앨범 맨 앞에 모아 드려요.</p>
-            <p class="step__when">한 달에 한 번</p>
+            <!-- 그림: 이달의 순간 -->
+            <div class="step__visual" aria-hidden="true">
+              <div class="mini mini--moment">
+                <img src="assets/img/album-crayon.jpg" width="600" height="600" loading="lazy" alt="">
+                <div>
+                  <p class="mini__tag">처음 한 행동</p>
+                  <p class="mini__title">첫 그림</p>
+                </div>
+              </div>
+            </div>
+            <h3>이달의 순간</h3>
+            <p>처음 한 말, 좋아한 말을 남겨요.</p>
+            <p class="step__when">한 달 1번</p>
           </li>
         </ol>
+        </div>
 
+        <!-- 2장: 이안이네 11월 예시 -->
+        <div class="how-page" data-page aria-label="이안이네 11월 예시">
         <div class="month-flow">
-          <p class="month-flow__title">이안이네 11월은 이렇게 흘러갔어요</p>
+          <p class="month-flow__title">예를 들면, 이안이네 11월</p>
+          <p class="month-flow__sub">한 달에 이렇게 4번 기록하고, 2번 만들었어요.</p>
           <ol class="month-flow__list">
-            <li><b>11.3</b><span>놀이터 기록</span></li>
-            <li class="is-make"><b>11.12</b><span>양치 기록 → <em>동화</em> 만들기</span></li>
-            <li><b>11.15</b><span>소방서 기록</span></li>
-            <li class="is-make"><b>11.20</b><span>잠자리 기록 → <em>노래</em> 만들기</span></li>
-            <li class="is-moment"><b>11.30</b><span>이달의 순간 적기</span></li>
+            <li><img src="assets/img/album-playground.jpg" width="600" height="600" loading="lazy" alt=""><b>3일</b><span>놀이터</span></li>
+            <li class="is-make"><img src="assets/img/story-1-no-brushing.jpg" width="1600" height="1000" loading="lazy" alt=""><b>12일</b><span>양치 → <em>동화</em></span></li>
+            <li><img src="assets/img/album-firestation.jpg" width="600" height="600" loading="lazy" alt=""><b>15일</b><span>소방서</span></li>
+            <li class="is-make"><img src="assets/img/song-cover.jpg" width="600" height="600" loading="lazy" alt=""><b>20일</b><span>잠자리 → <em>노래</em></span></li>
+            <li class="is-moment"><img src="assets/img/album-crayon.jpg" width="600" height="600" loading="lazy" alt=""><b>30일</b><span>이달의 순간</span></li>
           </ol>
-          <p class="month-flow__foot">월간 구독 기준 · 기록 4번 · 동화 1편과 노래 1곡을 만들고, 이번 달에 동화 2편과 노래 2곡을 더 만들 수 있어요. 마음에 드는 동화는 <b>하드북</b>으로 받을 수 있어요 (1권 35,000원).</p>
+        </div>
+        </div>
+
+        <div class="how-nav">
+          <button class="btn btn--ghost btn--sm" type="button" data-prev>← 4단계 다시 보기</button>
+          <span class="how-nav__count" data-count aria-live="polite">1 / 2</span>
+          <button class="btn btn--primary btn--sm" type="button" data-next>이안이네 11월 예시 보기 →</button>
+        </div>
         </div>
       </div>
     </section>

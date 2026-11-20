@@ -6,25 +6,27 @@
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
-  // 탭 (화살표 키 이동 지원)
-  const tabs = [...document.querySelectorAll('[role="tab"]')];
-  const select = (tab) => {
-    tabs.forEach((t) => {
-      const on = t === tab;
-      t.setAttribute('aria-selected', on);
-      t.tabIndex = on ? 0 : -1;
-      document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
-    });
-    if (tab.id !== 'tab-song') stopSong();
-  };
-  tabs.forEach((tab, i) => {
-    tab.addEventListener('click', () => select(tab));
-    tab.addEventListener('keydown', (e) => {
-      const dir = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
-      if (!dir) return;
-      const next = tabs[(i + dir + tabs.length) % tabs.length];
-      next.focus();
-      select(next);
+  // 탭 (화살표 키 이동 지원): 탭 묶음(tablist)마다 따로 동작
+  document.querySelectorAll('[role="tablist"]').forEach((list) => {
+    const tabs = [...list.querySelectorAll('[role="tab"]')];
+    const select = (tab) => {
+      tabs.forEach((t) => {
+        const on = t === tab;
+        t.setAttribute('aria-selected', on);
+        t.tabIndex = on ? 0 : -1;
+        document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+      });
+      if (list.contains(document.getElementById('tab-song')) && tab.id !== 'tab-song') stopSong();
+    };
+    tabs.forEach((tab, i) => {
+      tab.addEventListener('click', () => select(tab));
+      tab.addEventListener('keydown', (e) => {
+        const dir = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+        if (!dir) return;
+        const next = tabs[(i + dir + tabs.length) % tabs.length];
+        next.focus();
+        select(next);
+      });
     });
   });
 
