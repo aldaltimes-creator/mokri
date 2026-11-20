@@ -179,7 +179,7 @@
 
         <!-- 동화 -->
         <div class="panel" role="tabpanel" id="panel-story" aria-labelledby="tab-story" hidden>
-          <div class="card story">
+          <div class="card story" data-pager>
             <div class="story__stage">
               <figure class="story__page is-active" data-page>
                 <img src="assets/img/story-1-no-brushing.jpg" width="1600" height="1000"
@@ -213,22 +213,170 @@
 
         <!-- 앨범 -->
         <div class="panel" role="tabpanel" id="panel-album" aria-labelledby="tab-album" hidden>
-          <div class="card album-sample">
-            <div class="album-sample__cover">
-              <p class="album-sample__month">2026. 11</p>
-              <p class="album-sample__name">이안이의<br>스물두 번째 달</p>
-              <div class="polaroids" aria-hidden="true">
-                <span class="polaroid p1"><img src="assets/img/album-playground.jpg" width="600" height="600" loading="lazy" alt=""></span>
-                <span class="polaroid p2"><img src="assets/img/album-firestation.jpg" width="600" height="600" loading="lazy" alt=""></span>
-                <span class="polaroid p3"><img src="assets/img/album-crayon.jpg" width="600" height="600" loading="lazy" alt=""></span>
+          <div class="album-switch" role="group" aria-label="앨범을 보는 방법">
+            <button type="button" class="album-switch__btn" data-view="web" aria-pressed="true">웹 앨범</button>
+            <button type="button" class="album-switch__btn" data-view="book" aria-pressed="false">실물 책</button>
+          </div>
+
+          <!-- 웹 앨범: 브라우저 안에서 한 쪽씩 넘겨 보기 -->
+          <div class="card album-web" data-album-view="web" data-pager>
+            <div class="device">
+              <div class="device__bar" aria-hidden="true">
+                <i></i><i></i><i></i>
+                <span>kkomul.app/album/2026-11</span>
+              </div>
+              <div class="device__screen">
+                <!-- 1. 표지 -->
+                <section class="aw-page is-active" data-page aria-label="표지">
+                  <div class="album-sample">
+                    <div class="album-sample__cover">
+                      <p class="album-sample__month">2026. 11</p>
+                      <p class="album-sample__name">이안이의<br>스물두 번째 달</p>
+                      <div class="polaroids" aria-hidden="true">
+                        <span class="polaroid p1"><img src="assets/img/album-playground.jpg" width="600" height="600" loading="lazy" alt=""></span>
+                        <span class="polaroid p2"><img src="assets/img/album-firestation.jpg" width="600" height="600" loading="lazy" alt=""></span>
+                        <span class="polaroid p3"><img src="assets/img/album-crayon.jpg" width="600" height="600" loading="lazy" alt=""></span>
+                      </div>
+                    </div>
+                    <div>
+                      <p class="aw-kicker">이번 달에 담긴 것</p>
+                      <ul class="album-sample__list">
+                        <li><strong>사진 24장</strong><span>놀이터 미끄럼틀, 소방서 구경 간 날</span></li>
+                        <li><strong>아이 그림 5장</strong><span>크레용으로 끼적끼적 첫 낙서</span></li>
+                        <li><strong>아이의 말 3개</strong><span>“엄마, 빵빵! 삐뽀삐뽀!”</span></li>
+                        <li><strong>이달의 노래 · 동화 · 영상</strong><span>11월 30일에 한 권으로 엮었어요</span></li>
+                      </ul>
+                    </div>
+                  </div>
+                </section>
+
+                <!-- 2. 사진 -->
+                <section class="aw-page" data-page aria-label="11월의 사진">
+                  <p class="aw-kicker">11월의 사진 <span>24장</span></p>
+                  <ul class="aw-photos">
+                    <li>
+                      <img src="assets/img/album-playground.jpg" width="600" height="600" loading="lazy" alt="놀이터에서 미끄럼틀 앞에 선 이안이">
+                      <span><b>11.3</b> 놀이터 미끄럼틀, 혼자 올라갔어요</span>
+                    </li>
+                    <li>
+                      <img src="assets/img/album-firestation.jpg" width="600" height="600" loading="lazy" alt="소방서에서 커다란 소방차를 가리키는 이안이">
+                      <span><b>11.15</b> 소방서에서 진짜 소방차를 봤어요</span>
+                    </li>
+                    <li>
+                      <img src="assets/img/album-sofa.jpg" width="600" height="600" loading="lazy" alt="거실 소파에서 웃고 있는 이안이와 친구">
+                      <span><b>11.21</b> 거실에서 고양이 찾기 놀이</span>
+                    </li>
+                    <li class="aw-photos__more" aria-label="사진 21장 더 있음"><b>+21</b><span>장 더 보기</span></li>
+                  </ul>
+                </section>
+
+                <!-- 3. 그림 -->
+                <section class="aw-page" data-page aria-label="이안이의 그림">
+                  <p class="aw-kicker">이안이의 그림 <span>5장</span></p>
+                  <div class="aw-drawing">
+                    <img src="assets/img/album-crayon.jpg" width="600" height="600" loading="lazy" alt="빨간 크레용으로 그린 동그라미와 검은 바퀴 두 개, 노란 경광등이 있는 소방차 낙서">
+                    <div class="aw-note">
+                      <p class="aw-note__date">11월 9일 · 엄마의 메모</p>
+                      <p class="aw-note__text">빨간 동그라미는 빵빵이래요. 바퀴를 그릴 때마다 “빵빵!” 소리를 냈어요. 처음으로 무언가를 그리겠다며 크레용을 쥔 날이에요.</p>
+                    </div>
+                  </div>
+                </section>
+
+                <!-- 4. 아이의 말 -->
+                <section class="aw-page" data-page aria-label="이안이가 한 말">
+                  <p class="aw-kicker">이안이가 한 말 <span>3개</span></p>
+                  <ul class="aw-words">
+                    <li><q>엄마, 빵빵! 삐뽀삐뽀!</q><span>11.2 · 창밖으로 소방차가 지나갈 때</span></li>
+                    <li><q>이안이가 해!</q><span>11.12 · 신발을 혼자 신겠다며</span></li>
+                    <li><q>아빠 안아, 꼭!</q><span>11.20 · 잠들기 전에</span></li>
+                  </ul>
+                  <div class="aw-made">
+                    <div class="aw-made__item">
+                      <img src="assets/img/song-cover.jpg" width="600" height="600" loading="lazy" alt="">
+                      <p><small>이달의 노래</small>반짝반짝 이안이 꿈나라</p>
+                    </div>
+                    <div class="aw-made__item">
+                      <img src="assets/img/story-2-bbangbbang.jpg" width="1600" height="1000" loading="lazy" alt="">
+                      <p><small>이달의 동화</small>빵빵이와 반짝반짝 양치 출동</p>
+                    </div>
+                  </div>
+                </section>
+
+                <!-- 5. 추억 영상 -->
+                <section class="aw-page" data-page aria-label="추억 영상">
+                  <p class="aw-kicker">추억 영상</p>
+                  <div class="aw-video">
+                    <img src="assets/img/story-3-dreamland.jpg" width="1600" height="1000" loading="lazy" alt="영상 첫 장면: 달빛 아래 잠든 이안이와 빵빵이">
+                    <span class="aw-video__play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+                    <span class="aw-video__time">1:24</span>
+                  </div>
+                  <p class="aw-video__title">이안이의 11월</p>
+                  <p class="aw-video__meta">사진 18장 · 그림 2장 · 배경음악 「반짝반짝 이안이 꿈나라」</p>
+                  <ul class="aw-family">
+                    <li><b>할머니</b> 우리 이안이 소방관 되겠네 ♥</li>
+                    <li><b>할아버지</b> 크레용 그림 액자로 걸어 두자</li>
+                  </ul>
+                </section>
               </div>
             </div>
-            <ul class="album-sample__list">
-              <li><strong>사진 24장</strong><span>놀이터 미끄럼틀, 소방서 구경 간 날</span></li>
-              <li><strong>아이 그림 5장</strong><span>크레용으로 끼적끼적 첫 낙서</span></li>
-              <li><strong>아이의 말 3개</strong><span>“엄마, 빵빵! 삐뽀삐뽀!”</span></li>
-              <li><strong>이달의 노래 · 동화</strong><span>앨범 영상의 배경음악이 돼요</span></li>
-            </ul>
+            <div class="story__nav">
+              <button class="icon-btn" type="button" data-prev aria-label="이전 쪽">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 5-7 7 7 7"/></svg>
+              </button>
+              <span class="story__count" data-count aria-live="polite">1 / 5</span>
+              <button class="icon-btn" type="button" data-next aria-label="다음 쪽">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg>
+              </button>
+            </div>
+            <p class="story__title">말일에 도착한 웹 앨범 · 가족 누구나 휴대폰으로 볼 수 있어요</p>
+          </div>
+
+          <!-- 실물 책: 웹 앨범을 그대로 인쇄 -->
+          <div class="card album-book" data-album-view="book" hidden>
+            <div class="album-book__top">
+              <div class="book3d" aria-hidden="true">
+                <div class="book3d__body">
+                  <div class="book3d__back"></div>
+                  <div class="book3d__spine"><span>이안이의 스물두 번째 달</span></div>
+                  <div class="book3d__edge"></div>
+                  <div class="book3d__cover">
+                    <p class="album-sample__month">2026. 11</p>
+                    <p class="album-sample__name">이안이의<br>스물두 번째 달</p>
+                    <p class="book3d__brand">꼬물상자</p>
+                  </div>
+                </div>
+              </div>
+              <div class="album-book__info">
+                <p class="aw-kicker">웹 앨범 그대로, 손에 잡히는 책으로</p>
+                <h3 class="album-book__title">확정한 앨범은 하드커버 책으로 주문할 수 있어요</h3>
+                <dl class="specs">
+                  <div><dt>크기</dt><dd>21 × 28cm 세로형 하드커버</dd></div>
+                  <div><dt>쪽수</dt><dd>월간 24쪽 · 1년 합본은 12달을 한 권에</dd></div>
+                  <div><dt>종이</dt><dd>빛 반사가 적은 무광 종이, 모서리는 둥글게</dd></div>
+                  <div><dt>표지</dt><dd>아이 이름과 달을 표지와 책등에 새겨요</dd></div>
+                  <div><dt>노래</dt><dd>쪽마다 있는 QR을 비추면 이달의 노래와 영상이 나와요</dd></div>
+                </dl>
+                <p class="album-book__note">사양은 기획 단계의 예시예요.</p>
+              </div>
+            </div>
+
+            <div class="spread" role="img" aria-label="책을 펼친 모습 예시. 왼쪽 쪽에는 소방서 사진 두 장과 날짜 메모, 오른쪽 쪽에는 크레용 그림과 이안이가 한 말이 인쇄되어 있어요.">
+              <div class="spread__page spread__page--l">
+                <p class="spread__date">11월 15일</p>
+                <div class="spread__photos">
+                  <img src="assets/img/album-firestation.jpg" width="600" height="600" loading="lazy" alt="">
+                  <img src="assets/img/album-playground.jpg" width="600" height="600" loading="lazy" alt="">
+                </div>
+                <p class="spread__text">소방서에 처음 간 날. 커다란 소방차 앞에서 한참을 서서 “빵빵이 아빠야?” 하고 물었어요.</p>
+                <span class="spread__num">6</span>
+              </div>
+              <div class="spread__page spread__page--r">
+                <img class="spread__drawing" src="assets/img/album-crayon.jpg" width="600" height="600" loading="lazy" alt="">
+                <p class="spread__quote">“엄마, 빵빵! 삐뽀삐뽀!”</p>
+                <span class="spread__qr"><i></i>이달의 노래 듣기</span>
+                <span class="spread__num">7</span>
+              </div>
+            </div>
           </div>
         </div>
         </div>
@@ -247,6 +395,7 @@
             <li><b>추억 영상</b> 1~2분 영상, 배경음악은 이달에 만든 우리 아이 노래</li>
             <li><b>며칠간 직접 편집</b> 사진 순서와 표지 문구를 고친 뒤 확정</li>
             <li><b>가족과 함께</b> 할머니, 할아버지를 초대하면 보기 전용으로 함께 봐요</li>
+            <li><b>실물 책으로</b> 확정한 앨범은 하드커버 책으로 받아 책장에 꽂아 둘 수 있어요</li>
           </ul>
         </div>
         <div class="shelf" aria-hidden="true">

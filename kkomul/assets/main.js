@@ -64,20 +64,31 @@
   });
   render();
 
-  // 동화 넘김
-  const pages = [...document.querySelectorAll('[data-page]')];
-  const prev = document.querySelector('[data-prev]');
-  const next = document.querySelector('[data-next]');
-  const count = document.querySelector('[data-count]');
-  let page = 0;
-  const go = (n) => {
-    page = Math.max(0, Math.min(pages.length - 1, n));
-    pages.forEach((p, i) => p.classList.toggle('is-active', i === page));
-    count.textContent = `${page + 1} / ${pages.length}`;
-    prev.disabled = page === 0;
-    next.disabled = page === pages.length - 1;
-  };
-  prev.addEventListener('click', () => go(page - 1));
-  next.addEventListener('click', () => go(page + 1));
-  go(0);
+  // 쪽 넘김 (동화, 웹 앨범): [data-pager] 안의 [data-page]를 한 장씩 보여 줌
+  document.querySelectorAll('[data-pager]').forEach((root) => {
+    const pages = [...root.querySelectorAll('[data-page]')];
+    const prev = root.querySelector('[data-prev]');
+    const next = root.querySelector('[data-next]');
+    const count = root.querySelector('[data-count]');
+    let page = 0;
+    const go = (n) => {
+      page = Math.max(0, Math.min(pages.length - 1, n));
+      pages.forEach((p, i) => p.classList.toggle('is-active', i === page));
+      count.textContent = `${page + 1} / ${pages.length}`;
+      prev.disabled = page === 0;
+      next.disabled = page === pages.length - 1;
+    };
+    prev.addEventListener('click', () => go(page - 1));
+    next.addEventListener('click', () => go(page + 1));
+    go(0);
+  });
+
+  // 앨범 샘플: 웹 앨범 / 실물 책 전환
+  const viewBtns = [...document.querySelectorAll('[data-view]')];
+  viewBtns.forEach((btn) => btn.addEventListener('click', () => {
+    viewBtns.forEach((b) => b.setAttribute('aria-pressed', b === btn));
+    document.querySelectorAll('[data-album-view]').forEach((v) => {
+      v.hidden = v.dataset.albumView !== btn.dataset.view;
+    });
+  }));
 })();

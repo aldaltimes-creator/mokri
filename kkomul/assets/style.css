@@ -301,6 +301,155 @@ button { font: inherit; color: inherit; }
 .album-sample__list strong { font-size: 17px; }
 .album-sample__list span { color: var(--ink-sub); font-size: 15px; }
 
+/* 웹 앨범 / 실물 책 전환 */
+.album-switch {
+  display: flex; justify-content: center; gap: 8px; margin: 0 auto 20px;
+}
+.album-switch__btn {
+  padding: 8px 18px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface);
+  font: inherit; font-size: 15px; font-weight: 700; color: var(--ink-sub); cursor: pointer;
+  transition: border-color .2s, color .2s, background-color .2s;
+}
+.album-switch__btn[aria-pressed="true"] { border-color: var(--sage); background: var(--sage-soft); color: var(--ink); }
+.album-switch__btn:focus-visible, .tab:focus-visible, .icon-btn:focus-visible { outline: 3px solid var(--mustard); outline-offset: 2px; }
+[data-album-view] { animation: fade .35s ease; }
+
+/* 웹 앨범: 브라우저 틀 */
+.album-web { padding: 28px; }
+.device { border: 1px solid var(--line); border-radius: 16px; overflow: hidden; background: var(--bg); }
+.device__bar {
+  display: flex; align-items: center; gap: 6px; padding: 10px 14px;
+  background: var(--bg-tint); border-bottom: 1px solid var(--line);
+}
+.device__bar i { width: 10px; height: 10px; border-radius: 50%; background: var(--line); }
+.device__bar span {
+  margin-left: 10px; flex: 1; min-width: 0; padding: 4px 12px; border-radius: 999px; background: var(--surface);
+  font-size: 12px; color: var(--ink-sub); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.device__screen { padding: 28px; min-height: 470px; }
+.aw-page { display: none; }
+.aw-page.is-active { display: block; animation: fade .4s ease; }
+.aw-page .album-sample { padding: 0; }
+.aw-kicker {
+  font-size: 13px; font-weight: 700; letter-spacing: .08em; color: var(--coral-btn); margin-bottom: 14px;
+}
+.aw-kicker span { color: var(--ink-sub); font-weight: 500; letter-spacing: 0; margin-left: 4px; }
+
+.aw-photos { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.aw-photos li { display: grid; gap: 8px; align-content: start; min-width: 0; }
+.aw-photos img { width: 100%; height: auto; aspect-ratio: 3 / 4; object-fit: cover; border-radius: 10px; }
+.aw-photos span { font-size: 14px; color: var(--ink-sub); line-height: 1.5; }
+.aw-photos b { color: var(--ink); margin-right: 4px; font-variant-numeric: tabular-nums; }
+.aw-photos__more {
+  aspect-ratio: 3 / 4; place-content: center !important; justify-items: center; text-align: center;
+  border-radius: 10px; background: var(--sage-soft); color: var(--ink);
+}
+.aw-photos__more b { font-family: var(--serif); font-size: 30px; margin: 0; }
+
+.aw-drawing { display: grid; grid-template-columns: 1.1fr 1fr; gap: 28px; align-items: center; }
+.aw-drawing img { width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; border-radius: 12px; box-shadow: var(--shadow); }
+.aw-note { padding: 24px; border-radius: 14px; background: var(--mustard-soft); rotate: 1.5deg; }
+.aw-note__date { font-size: 13px; font-weight: 700; color: var(--ink-sub); margin-bottom: 8px; }
+.aw-note__text { font-family: var(--serif); font-size: 18px; line-height: 1.9; }
+
+.aw-words { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.aw-words li { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; }
+.aw-words q {
+  quotes: none; font-family: var(--serif); font-weight: 700; font-size: 20px;
+  padding: 10px 18px; border-radius: 18px 18px 18px 4px; background: var(--surface); border: 1px solid var(--line);
+}
+.aw-words span { font-size: 14px; color: var(--ink-sub); }
+.aw-made { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 26px; }
+.aw-made__item {
+  display: flex; align-items: center; gap: 14px; padding: 12px; border-radius: 14px;
+  background: var(--surface); border: 1px solid var(--line); min-width: 0;
+}
+.aw-made__item img { width: 64px; height: 64px; flex: none; object-fit: cover; border-radius: 10px; }
+.aw-made__item p { font-family: var(--serif); font-weight: 700; line-height: 1.5; min-width: 0; }
+.aw-made__item small { display: block; font-family: var(--sans); font-weight: 500; font-size: 12px; color: var(--ink-sub); }
+
+.aw-video { position: relative; border-radius: 14px; overflow: hidden; }
+.aw-video img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 8; object-fit: cover; }
+.aw-video__play {
+  position: absolute; inset: 0; margin: auto; width: 64px; height: 64px; border-radius: 50%;
+  display: grid; place-items: center; background: rgb(255 253 249 / .92); box-shadow: var(--shadow);
+}
+.aw-video__play svg { width: 26px; height: 26px; fill: var(--coral-btn); margin-left: 4px; }
+.aw-video__time {
+  position: absolute; right: 12px; bottom: 12px; padding: 2px 10px; border-radius: 999px;
+  background: rgb(61 47 42 / .75); color: #fff; font-size: 13px; font-variant-numeric: tabular-nums;
+}
+.aw-video__title { font-family: var(--serif); font-weight: 700; font-size: 20px; margin-top: 14px; }
+.aw-video__meta { font-size: 14px; color: var(--ink-sub); }
+.aw-family { list-style: none; margin: 14px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.aw-family li { padding: 6px 14px; border-radius: 999px; background: var(--sage-soft); font-size: 14px; }
+.aw-family b { margin-right: 6px; }
+
+/* 실물 책 */
+.album-book { padding: 32px; }
+.album-book__top { display: grid; grid-template-columns: 300px 1fr; gap: 36px; align-items: center; }
+.book3d { perspective: 1100px; display: grid; place-items: center; padding: 16px 0 24px; }
+.book3d__body {
+  position: relative; width: 210px; aspect-ratio: 3 / 4; transform-style: preserve-3d;
+  /* 왼쪽으로 살짝 돌려 이름이 새겨진 책등이 보이게 */
+  transform: rotateY(28deg) rotateX(4deg); transition: transform .8s cubic-bezier(.2,.7,.2,1);
+}
+.book3d:hover .book3d__body { transform: rotateY(10deg) rotateX(2deg); }
+.book3d__cover, .book3d__back { position: absolute; inset: 0; border-radius: 3px 10px 10px 3px; }
+.book3d__cover {
+  transform: translateZ(12px); padding: 22px 20px; color: var(--ink);
+  background: #AEC4AE url("img/album-cover.jpg") center / cover no-repeat;
+  box-shadow: inset 8px 0 0 rgb(0 0 0 / .1), inset 10px 0 0 rgb(255 255 255 / .25);
+}
+.book3d__cover .album-sample__name { font-size: 22px; }
+.book3d__brand { position: absolute; left: 20px; bottom: 16px; font-family: var(--serif); font-size: 12px; font-weight: 700; opacity: .7; }
+.book3d__back { transform: translateZ(-12px); background: #8FAE93; box-shadow: 30px 30px 40px -18px rgb(61 47 42 / .45); }
+.book3d__spine {
+  position: absolute; top: 0; bottom: 0; left: -12px; width: 24px;
+  background: #8FAE93; transform: rotateY(-90deg);
+  display: grid; place-items: center; overflow: hidden;
+}
+.book3d__spine span { writing-mode: vertical-rl; font-family: var(--serif); font-size: 10px; font-weight: 700; color: var(--surface); white-space: nowrap; }
+.book3d__edge {
+  position: absolute; top: 4px; bottom: 4px; right: -11px; width: 22px; transform: rotateY(90deg);
+  background: repeating-linear-gradient(90deg, #FFFDF9 0 2px, #E9E0D4 2px 3px);
+}
+.album-book__title { font-family: var(--serif); font-size: clamp(20px, 2.4vw, 24px); line-height: 1.5; margin-bottom: 18px; text-wrap: balance; }
+.specs { margin: 0; display: grid; gap: 0; }
+.specs div { display: grid; grid-template-columns: 56px 1fr; gap: 12px; padding: 10px 0; border-bottom: 1px dashed var(--line); }
+.specs div:last-child { border-bottom: 0; }
+.specs dt { font-weight: 700; font-size: 14px; color: var(--ink-sub); }
+.specs dd { margin: 0; font-size: 15px; }
+.album-book__note { margin-top: 10px; font-size: 13px; color: var(--ink-sub); }
+
+/* 펼친 책 */
+.spread {
+  display: grid; grid-template-columns: 1fr 1fr; margin-top: 28px;
+  border-radius: 6px; box-shadow: 0 24px 40px -24px rgb(61 47 42 / .5), 0 0 0 1px var(--line);
+  background: #FFFDF9;
+}
+.spread__page { position: relative; padding: 26px 26px 40px; display: grid; gap: 14px; align-content: start; min-width: 0; }
+.spread__page--l { background: linear-gradient(to left, rgb(61 47 42 / .12), transparent 14%); border-radius: 6px 0 0 6px; }
+.spread__page--r { background: linear-gradient(to right, rgb(61 47 42 / .12), transparent 14%); border-radius: 0 6px 6px 0; justify-items: center; text-align: center; }
+.spread__date { font-size: 12px; font-weight: 700; letter-spacing: .1em; color: var(--coral-btn); }
+.spread__photos { display: grid; grid-template-columns: 1.3fr 1fr; gap: 10px; align-items: end; }
+.spread__photos img { width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; border-radius: 4px; }
+.spread__photos img + img { aspect-ratio: 3 / 4; }
+.spread__text { font-family: var(--serif); font-size: 15px; line-height: 1.9; }
+.spread__drawing { width: 78%; height: auto; aspect-ratio: 1; object-fit: cover; border-radius: 4px; rotate: -2deg; box-shadow: 0 6px 14px -8px rgb(0 0 0 / .4); }
+.spread__quote { font-family: var(--serif); font-weight: 700; font-size: 18px; }
+.spread__qr { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; color: var(--ink-sub); }
+.spread__qr i {
+  width: 28px; height: 28px; border-radius: 4px;
+  background:
+    conic-gradient(var(--ink) 25%, transparent 0 50%, var(--ink) 0 75%, transparent 0) 0 0 / 8px 8px,
+    var(--surface);
+  outline: 2px solid var(--ink); outline-offset: -2px;
+}
+.spread__num { position: absolute; bottom: 14px; font-size: 12px; color: var(--ink-sub); font-variant-numeric: tabular-nums; }
+.spread__page--l .spread__num { left: 26px; }
+.spread__page--r .spread__num { right: 26px; }
+
 /* ---------- 월간 앨범 ---------- */
 .album { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
 .album .section__title { text-align: left; }
@@ -387,6 +536,8 @@ button { font: inherit; color: inherit; }
   .checks { text-align: left; max-width: 480px; margin-inline: auto; }
   .album-sample { grid-template-columns: 1fr; }
   .album-sample__cover { max-width: 300px; width: 100%; margin: 0 auto; }
+  .album-book__top { grid-template-columns: 1fr; gap: 12px; }
+  .aw-photos { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 720px) {
   .steps, .safe { grid-template-columns: 1fr; }
@@ -395,6 +546,13 @@ button { font: inherit; color: inherit; }
   .player__cover img { width: 140px; height: 140px; margin: 0 auto; }
   .lyrics { font-size: 16px; padding: 18px 12px; }
   .story, .album-sample { padding: 20px; }
+  .album-web, .album-book { padding: 16px; }
+  .device__screen { padding: 18px 16px; min-height: 0; }
+  .aw-page .album-sample { padding: 0; }
+  .aw-drawing, .aw-made { grid-template-columns: 1fr; }
+  .spread { grid-template-columns: 1fr; }
+  .spread__page--l, .spread__page--r { background: none; border-radius: 0; }
+  .spread__page--l { border-bottom: 1px dashed var(--line); }
   .hero__cta .btn { flex: 1 1 100%; }
   .chip-float { font-size: 13px; padding: 8px 12px; }
   .foot__inner { flex-direction: column; align-items: flex-start; }

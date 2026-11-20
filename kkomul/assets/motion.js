@@ -115,7 +115,8 @@
   // ── 높이가 바뀌는 순간 스크롤 위치 다시 계산 ─────────────
   const refresh = () => requestAnimationFrame(() => ScrollTrigger.refresh());
   const watch = new MutationObserver(refresh);
-  $$('[role="tabpanel"]').forEach((p) => watch.observe(p, { attributes: true, attributeFilter: ['hidden'] }));
+  $$('[role="tabpanel"], [data-album-view]').forEach((p) => watch.observe(p, { attributes: true, attributeFilter: ['hidden'] }));
+  $$('[data-page]').forEach((p) => watch.observe(p, { attributes: true, attributeFilter: ['class'] }));
   $$('.faq details').forEach((d) => d.addEventListener('toggle', refresh));
   document.fonts?.ready.then(refresh);
   window.addEventListener('load', () => {
