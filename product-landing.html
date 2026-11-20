@@ -1,0 +1,433 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>목리 MOKRI — Maru 라운지 체어</title>
+<meta name="description" content="목리(MOKRI) 첫 에디션 소개 랜딩 페이지 (GSAP + ScrollTrigger + Lenis + SplitType)">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Noto+Serif+KR:wght@300;400;500&family=Noto+Sans+KR:wght@300;400;500&display=swap">
+<style>
+  /* =========================================================
+     디자인 토큰 (목리 사이트 assets/css/site.css 색상과 동일)
+     ========================================================= */
+  :root{
+    --bg:#F2EEE6;          /* 한지 — 라이트 섹션 배경 */
+    --sand:#E9E3D7;        /* 모래 */
+    --ink:#2B2A28;         /* 먹 — 글자 */
+    --muted:#7A7468;
+    --line:rgba(43,42,40,.14);
+    --oak:#A67B5B;         /* 참나무 — 포인트 */
+    --oak-deep:#8A6246;
+    --dark:#1A1917;        /* 다크 섹션 배경 */
+    --dark-ink:#F2EEE6;
+    --glow:#F3C98B;        /* 무선충전 글로우 (따뜻한 빛) */
+    --nav-h:72px;
+    --pad:clamp(16px,4vw,56px);
+    --font-latin:'Cormorant Garamond',Georgia,serif;
+    --font-ko:'Noto Serif KR','Nanum Myeongjo',serif;
+    --font-ui:'Noto Sans KR',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html.lenis,html.lenis body{height:auto}
+  .lenis.lenis-smooth{scroll-behavior:auto!important}
+  .lenis.lenis-stopped{overflow:hidden}
+  body{background:var(--bg);color:var(--ink);font-family:var(--font-ui);font-weight:300;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+
+  /* =========================================================
+     네비게이션
+     ========================================================= */
+  .nav{position:fixed;inset:0 0 auto 0;height:var(--nav-h);z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 var(--pad);color:#fff;mix-blend-mode:difference}
+  .nav__logo{display:flex;align-items:baseline;gap:12px}
+  .nav__logo b{font-family:var(--font-latin);font-weight:500;font-size:26px;letter-spacing:.06em}
+  .nav__logo span{font-size:11px;letter-spacing:.14em;opacity:.8}
+  .nav__links{display:flex;gap:28px;font-size:13px;letter-spacing:.04em}
+  .nav__btn{border:1px solid currentColor;border-radius:999px;padding:10px 20px;font-size:13px;font-weight:400;transition:background .3s,color .3s}
+  .nav__btn:hover{background:#fff;color:#000}
+  @media (max-width:768px){.nav__links,.nav__logo span{display:none}}
+
+  /* =========================================================
+     공통
+     ========================================================= */
+  .eyebrow{font-family:var(--font-latin);font-size:15px;letter-spacing:.2em;text-transform:uppercase;color:var(--oak-deep)}
+  h2{font-family:var(--font-ko);font-size:clamp(32px,4.6vw,72px);line-height:1.18;letter-spacing:-.03em;font-weight:400}
+  h2 .line{overflow:hidden;padding-bottom:.08em}   /* SplitType 라인 마스크 */
+  .lead{font-size:clamp(15px,1.25vw,18px);line-height:1.8;color:var(--muted);max-width:36ch}
+  section{position:relative}
+
+  /* =========================================================
+     섹션 1 - 히어로
+     ========================================================= */
+  .hero{height:100vh;min-height:560px;overflow:hidden;display:grid;place-items:center;color:#fff;background:#2b2a28}
+  .hero__bg{position:absolute;inset:0;will-change:transform}
+  .hero__bg img{width:100%;height:100%;object-fit:cover}
+  .hero__bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(30,25,20,.15),rgba(30,25,20,.5))}
+  .hero__content{position:relative;text-align:center;padding:0 var(--pad)}
+  .hero__kicker{font-family:var(--font-latin);font-size:clamp(16px,1.6vw,22px);letter-spacing:.3em;margin-bottom:12px;opacity:.9}
+  .hero__title{font-family:var(--font-latin);font-size:clamp(84px,18vw,280px);line-height:.85;letter-spacing:.02em;font-weight:500}
+  .hero__sub{margin-top:28px;font-family:var(--font-ko);font-size:clamp(15px,1.4vw,19px);opacity:.92}
+  .hero__scroll{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);font-family:var(--font-latin);font-size:13px;letter-spacing:.3em;text-transform:uppercase;opacity:.75}
+
+  /* =========================================================
+     인트로
+     ========================================================= */
+  .intro{padding:clamp(96px,16vh,180px) var(--pad);display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:end}
+  .intro h2{max-width:13ch}
+  @media (max-width:768px){.intro{grid-template-columns:1fr}}
+
+  /* =========================================================
+     섹션 2 - 제품 Sticky 시퀀스 (Maru 라운지 체어 360° 프레임)
+     ========================================================= */
+  .seq{height:300vh;background:var(--sand)}            /* 래퍼 높이 */
+  .seq__sticky{position:sticky;top:0;height:100vh;overflow:hidden;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;padding:0 var(--pad)}
+  .seq__media{position:relative;display:grid;place-items:center;height:100%}
+  .seq__ring{position:absolute;width:min(40vw,560px);aspect-ratio:1;border-radius:50%;border:1px solid var(--line)}
+  .seq__product{position:relative;width:min(44vw,620px);will-change:transform}
+  .seq__product img{width:100%;height:auto}
+  .seq__label{position:absolute;left:0;top:calc(var(--nav-h) + 24px);font-family:var(--font-latin);font-size:15px;letter-spacing:.14em;color:var(--muted)}
+  .seq__texts{position:relative;height:280px}
+  .seq__text{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;gap:16px;opacity:0}
+  .seq__text h3{font-family:var(--font-ko);font-size:clamp(26px,3vw,46px);letter-spacing:-.02em;line-height:1.2;font-weight:400}
+  .seq__num{font-family:var(--font-latin);font-size:16px;letter-spacing:.1em;color:var(--oak-deep)}
+  .seq__progress{position:absolute;left:var(--pad);bottom:40px;width:160px;height:1px;background:var(--line)}
+  .seq__progress i{position:absolute;inset:0;background:var(--ink);transform-origin:left;transform:scaleX(0)}
+
+  /* =========================================================
+     섹션 3 - 하루 시간 흐름
+     ========================================================= */
+  .day{padding:clamp(96px,14vh,160px) var(--pad) 0}
+  .day__head{margin-bottom:64px}
+  .day__grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(24px,5vw,80px)}
+  .day__photos{display:flex;flex-direction:column;gap:12vh;padding-bottom:30vh}
+  .day__photo{height:72vh;overflow:hidden;position:relative}
+  .day__photo img{width:100%;height:100%;object-fit:cover}
+  .day__photo .tag{display:none}
+  .day__clock{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;justify-content:center;gap:28px}
+  .clock__sky{position:relative;width:min(100%,360px);aspect-ratio:2/1;border-bottom:1px solid var(--line);overflow:hidden}
+  .clock__arc{position:absolute;left:0;right:0;bottom:-100%;aspect-ratio:1;border:1px dashed var(--line);border-radius:50%}
+  .clock__sun{position:absolute;left:0;top:0;width:44px;height:44px;margin:-22px 0 0 -22px;color:var(--oak)}
+  .clock__sun svg{width:100%;height:100%;filter:drop-shadow(0 0 12px currentColor)}
+  .clock__time{font-family:var(--font-latin);font-size:clamp(84px,10vw,160px);font-weight:500;letter-spacing:-.01em;font-variant-numeric:tabular-nums lining-nums;line-height:1}
+  .clock__desc{position:relative;min-height:140px}
+  .clock__desc p{position:absolute;inset:0 auto auto 0}
+  .clock__desc strong{display:block;font-family:var(--font-ko);font-weight:400;font-size:21px;margin-bottom:8px;color:var(--ink)}
+
+  /* =========================================================
+     섹션 4 - 다크 클로즈업 (Goyo 사이드 테이블)
+     ========================================================= */
+  .dark{background:var(--dark);color:var(--dark-ink);padding:clamp(120px,18vh,200px) var(--pad);overflow:hidden}
+  .dark .eyebrow{color:var(--oak)}
+  .dark .lead{color:#A39C90}
+  .dark__top{text-align:center;display:flex;flex-direction:column;align-items:center;gap:20px}
+  .dark__stage{position:relative;height:110vh;display:grid;place-items:center;margin-top:40px}
+  .dark__product{width:min(60vw,760px);aspect-ratio:3/2;overflow:hidden;border-radius:4px;will-change:transform;box-shadow:0 60px 120px rgba(0,0,0,.5)}
+  .dark__product img{width:100%;height:100%;object-fit:cover}
+  .charge{position:absolute;right:6%;bottom:16%;display:flex;align-items:center;gap:16px;opacity:0}
+  .charge__icon{width:84px;height:84px;border-radius:22px;display:grid;place-items:center;background:#22201d;border:1px solid #3a3632;color:#6b655c;transition:color .6s,border-color .6s,box-shadow .6s}
+  .charge__icon svg{width:40px;height:40px}
+  .charge.is-glowing .charge__icon{color:var(--glow);border-color:var(--glow);box-shadow:0 0 24px rgba(243,201,139,.55),0 0 80px rgba(243,201,139,.25);animation:pulse 2.2s ease-in-out infinite}
+  @keyframes pulse{50%{box-shadow:0 0 36px rgba(243,201,139,.8),0 0 120px rgba(243,201,139,.35)}}
+  .charge__label{font-size:14px;line-height:1.6;color:#BDB5A8}
+  .charge__label b{display:block;color:#fff;font-family:var(--font-ko);font-weight:400;font-size:18px}
+  .specs{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:80px;border-top:1px solid #34312d;padding-top:40px}
+  .specs em{display:block;font-family:var(--font-latin);font-style:normal;font-size:16px;color:var(--oak);margin-bottom:10px}
+  .specs b{display:block;font-family:var(--font-ko);font-size:clamp(22px,2.2vw,32px);font-weight:400;margin-bottom:8px}
+  .specs span{font-size:14px;line-height:1.7;color:#A39C90}
+
+  /* =========================================================
+     CTA / 푸터
+     ========================================================= */
+  .cta{padding:clamp(120px,20vh,220px) var(--pad);text-align:center;display:flex;flex-direction:column;align-items:center;gap:28px}
+  .cta__btn{background:var(--oak-deep);color:#fff;border-radius:999px;padding:18px 36px;font-weight:400}
+  footer{padding:32px var(--pad);border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:16px;font-size:12px;color:var(--muted)}
+
+  /* =========================================================
+     모바일 (768px 이하) — sticky 애니메이션 비활성화
+     ========================================================= */
+  @media (max-width:768px){
+    .seq{height:auto}
+    .seq__sticky{position:relative;height:auto;grid-template-columns:1fr;padding:96px var(--pad) 64px;gap:40px}
+    .seq__ring{width:80vw}
+    .seq__product{width:86vw}
+    .seq__label{top:32px}
+    .seq__texts{height:auto;display:flex;flex-direction:column;gap:48px}
+    .seq__text{position:relative;opacity:1}
+    .seq__progress{display:none}
+    .day__grid{grid-template-columns:1fr}
+    .day__clock{display:none}
+    .day__photos{gap:40px;padding-bottom:40px}
+    .day__photo{height:60vh}
+    .day__photo .tag{display:block;position:absolute;left:16px;bottom:16px;right:16px;color:#fff;font-family:var(--font-ko);text-shadow:0 2px 12px rgba(0,0,0,.5)}
+    .day__photo .tag b{display:block;font-family:var(--font-latin);font-weight:500;font-size:52px;line-height:1}
+    .dark__stage{height:auto;padding:40px 0;display:flex;flex-direction:column;gap:40px}
+    .dark__product{width:100%}
+    .charge{position:relative;right:auto;bottom:auto}
+    .specs{grid-template-columns:1fr}
+    footer{flex-direction:column}
+  }
+  @media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+</head>
+<body>
+
+<!-- 상단 고정 네비게이션 -->
+<header class="nav">
+  <a href="index.html" class="nav__logo" aria-label="목리 홈"><b>Mokri</b><span>木理 · Korean wood furniture</span></a>
+  <nav class="nav__links"><a href="#seq">Maru</a><a href="#day">Daily</a><a href="#goyo">Goyo</a><a href="collection.html">컬렉션</a></nav>
+  <a href="index.html#signup" class="nav__btn">Order now</a>
+</header>
+
+<!-- 섹션 1: 히어로 -->
+<section class="hero">
+  <div class="hero__bg"><img src="assets/img/hero-lounge.jpg" alt="햇살이 드는 거실의 크림 부클레 스위블 라운지 체어"></div>
+  <div class="hero__content">
+    <p class="hero__kicker">木 理</p>
+    <h1 class="hero__title">MOKRI</h1>
+    <p class="hero__sub">시간이 쌓일수록 아름다워지는, 한국의 원목 가구</p>
+  </div>
+  <div class="hero__scroll">Scroll</div>
+</section>
+
+<section class="intro">
+  <h2>가구를 하나의 체계로 짓습니다.</h2>
+  <div>
+    <p class="eyebrow" data-fade>First edition</p>
+    <p class="lead" data-fade style="margin-top:16px">형태와 비례, 소재가 서로 맞물려 공간 전체가 하나로 이어지도록. 소파와 라운지 체어, 테이블까지 — 목리의 첫 컬렉션을 소개합니다.</p>
+  </div>
+</section>
+
+<!-- 섹션 2: 제품 Sticky 시퀀스 — 스크롤에 맞춰 360° 프레임 이미지가 돌아감 -->
+<section class="seq" id="seq">
+  <div class="seq__sticky">
+    <div class="seq__media">
+      <span class="seq__label">Maru lounge chair — 360°</span>
+      <div class="seq__ring"></div>
+      <div class="seq__product"><img src="assets/img/spin/01.webp" alt="크림 부클레 스위블 라운지 체어 Maru" data-spin-img></div>
+    </div>
+    <div class="seq__texts">
+      <div class="seq__text"><span class="seq__num">01 / 03</span><h3>몸을 감싸는 곡선</h3><p class="lead">등받이에서 팔걸이까지 이어지는 하나의 곡선. 어느 방향으로 앉아도 몸을 부드럽게 받쳐 줍니다.</p></div>
+      <div class="seq__text"><span class="seq__num">02 / 03</span><h3>크림 부클레</h3><p class="lead">손끝에 닿는 결이 살아 있는 부클레 원단. 햇살 아래에서 더 따뜻한 빛을 띱니다.</p></div>
+      <div class="seq__text"><span class="seq__num">03 / 03</span><h3>월넛 스위블 베이스</h3><p class="lead">원목 월넛을 깎아 만든 회전 베이스. 창밖으로, 사람에게로 자연스럽게 몸을 돌립니다.</p></div>
+    </div>
+    <div class="seq__progress"><i></i></div>
+  </div>
+</section>
+
+<!-- 섹션 3: 하루 시간 흐름 -->
+<section class="day" id="day">
+  <div class="day__head">
+    <p class="eyebrow" data-fade>A day with Mokri</p>
+    <h2 style="margin-top:16px">아침부터 저녁까지,<br>쉼이 되는 자리.</h2>
+  </div>
+  <div class="day__grid">
+    <div class="day__photos">
+      <figure class="day__photo"><img src="assets/img/lounge-space.jpg" alt="부드러운 아침 빛이 드는 부클레 라운지 공간"><figcaption class="tag"><b>08:00</b>아침의 빛</figcaption></figure>
+      <figure class="day__photo"><img src="assets/img/showroom.jpg" alt="자연광이 드는 라운지 공간의 부클레 체어"><figcaption class="tag"><b>11:00</b>한낮의 자연광</figcaption></figure>
+      <figure class="day__photo"><img src="assets/img/lookbook-02.jpg" alt="물가 데크 위의 부클레 라운지 체어"><figcaption class="tag"><b>14:00</b>물가의 오후</figcaption></figure>
+      <figure class="day__photo"><img src="assets/img/lookbook-03.jpg" alt="노을 진 산을 배경으로 놓인 부클레 라운지 체어"><figcaption class="tag"><b>19:00</b>노을 아래의 쉼</figcaption></figure>
+    </div>
+    <aside class="day__clock">
+      <div class="clock__sky">
+        <div class="clock__arc"></div>
+        <div class="clock__sun"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="5"/><g stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M12 1.5v2.5M12 20v2.5M1.5 12H4M20 12h2.5M4.6 4.6l1.8 1.8M17.6 17.6l1.8 1.8M4.6 19.4l1.8-1.8M17.6 6.4l1.8-1.8"/></g></svg></div>
+      </div>
+      <div class="clock__time">08:00</div>
+      <div class="clock__desc lead">
+        <p><strong>아침의 빛</strong>커튼 사이로 들어온 빛이 부클레의 결을 비춥니다. 커피 한 잔과 함께 하루를 여는 자리.</p>
+        <p style="opacity:0"><strong>한낮의 자연광</strong>가장 밝은 시간, 참나무의 나뭇결이 가장 선명하게 드러납니다.</p>
+        <p style="opacity:0"><strong>물가의 오후</strong>어디에 두어도 쉼이 되는 자리. 실내를 벗어나도 어색하지 않은 형태.</p>
+        <p style="opacity:0"><strong>노을 아래의 쉼</strong>해가 지면 월넛 베이스가 더 깊은 색을 띱니다. 하루를 천천히 정리하는 시간.</p>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- 섹션 4: 다크 클로즈업 -->
+<section class="dark" id="goyo">
+  <div class="dark__top">
+    <p class="eyebrow" data-fade>Close-up · Goyo side table</p>
+    <h2>나뭇결까지,<br>조용하게 단단하다.</h2>
+    <p class="lead" data-fade>참나무와 월넛을 짜맞춘 조형 사이드 테이블. 두 나무의 결이 만나는 자리마다 손으로 다듬은 흔적이 남아 있습니다.</p>
+  </div>
+  <div class="dark__stage">
+    <div class="dark__product"><img src="assets/img/side-table.jpg" alt="참나무와 월넛을 짜맞춘 조형 사이드 테이블 Goyo"></div>
+    <div class="charge">
+      <div class="charge__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M12.6 7.5 10 12h4l-2.6 4.5"/></svg>
+      </div>
+      <div class="charge__label"><b>무선 충전 상판</b>휴대폰을 올려두기만 하면 충전 (옵션)</div>
+    </div>
+  </div>
+  <div class="specs">
+    <div data-fade><em>01</em><b>맞춤 제작</b><span>나무와 마감, 사이즈를 집의 평면에 맞춰 한 점씩 짓습니다</span></div>
+    <div data-fade><em>02</em><b>제작자 각인</b><span>모든 가구에 번호와 만든 사람의 이름을 새깁니다</span></div>
+    <div data-fade><em>03</em><b>평생 수리</b><span>오래 쓸수록 깊어지도록, 평생 고쳐 드립니다</span></div>
+  </div>
+</section>
+
+<section class="cta" id="order">
+  <p class="eyebrow" data-fade>Private preview</p>
+  <h2>첫 컬렉션을<br>먼저 만나보세요.</h2>
+  <p class="lead" data-fade style="text-align:center">오픈에 앞서, 소수의 분께 첫 에디션을 먼저 보여드립니다.</p>
+  <a href="index.html#signup" class="cta__btn" data-fade>프리뷰 신청하기</a>
+</section>
+<footer><span>© 2026 Mokri · 木理</span><span>브랜드 · 컬렉션 · 크래프트 · 쇼룸 · 목리 노트</span></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/split-type@0.3.4/umd/index.min.js"></script>
+<script>
+/* =========================================================
+   애니메이션 수치는 여기 CONFIG에서 조절
+   ========================================================= */
+const CONFIG = {
+  lenis:   { lerp: 0.1, wheelMultiplier: 1 },             // 관성 강도 (lerp 작을수록 더 미끄러짐)
+  hero:    { bgScale: 1.15, titleY: -200, titleOpacity: 0 },
+  seq:     { frames: 14, path: 'assets/img/spin/', rotate: 8, scaleFrom: 0.85, scaleTo: 1.1 }, // 섹션2 프레임 수·기울기·확대
+  h2:      { stagger: 0.05, duration: 1, ease: 'power3.out', start: 'top 85%' },
+  fade:    { y: 40, duration: 1, ease: 'power3.out', start: 'top 88%' },
+  dark:    { fromY: 400, fromRotate: -12 },                 // 섹션4 제품 시작 위치/각도
+  mobile:  '(max-width: 768px)',
+  desktop: '(min-width: 769px)'
+};
+
+gsap.registerPlugin(ScrollTrigger);
+
+/* ---------- Lenis + ScrollTrigger 동기화 ---------- */
+const lenis = new Lenis(CONFIG.lenis);
+lenis.on('scroll', ScrollTrigger.update);
+gsap.ticker.add((time) => lenis.raf(time * 1000));
+gsap.ticker.lagSmoothing(0);
+document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', e => {
+  const id = a.getAttribute('href');
+  if (id.length > 1) { e.preventDefault(); lenis.scrollTo(id); }
+}));
+
+/* ---------- 텍스트: 모든 h2 SplitType 리빌 ---------- */
+document.querySelectorAll('h2').forEach(h2 => {
+  const split = new SplitType(h2, { types: 'lines, words' });
+  gsap.from(split.words, {
+    yPercent: 100,
+    duration: CONFIG.h2.duration,
+    stagger: CONFIG.h2.stagger,
+    ease: CONFIG.h2.ease,
+    scrollTrigger: { trigger: h2, start: CONFIG.h2.start, toggleActions: 'play none none reverse' }
+  });
+});
+
+/* ---------- 일반 요소 페이드업 ---------- */
+gsap.utils.toArray('[data-fade]').forEach(el => {
+  gsap.from(el, {
+    opacity: 0, y: CONFIG.fade.y, duration: CONFIG.fade.duration, ease: CONFIG.fade.ease,
+    scrollTrigger: { trigger: el, start: CONFIG.fade.start, toggleActions: 'play none none reverse' }
+  });
+});
+
+/* ---------- 섹션 1: 히어로 (모든 화면) ---------- */
+gsap.timeline({ scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } })
+  .to('.hero__bg', { scale: CONFIG.hero.bgScale, ease: 'none' }, 0)
+  .to('.hero__content', { y: CONFIG.hero.titleY, opacity: CONFIG.hero.titleOpacity, ease: 'none' }, 0)
+  .to('.hero__scroll', { opacity: 0, ease: 'none', duration: .3 }, 0);
+
+/* ---------- 섹션 2용 360° 프레임 미리 불러오기 ---------- */
+const spinImg = document.querySelector('[data-spin-img]');
+const frameSrc = (i) => CONFIG.seq.path + String(i + 1).padStart(2, '0') + '.webp';
+for (let i = 0; i < CONFIG.seq.frames; i++) { const im = new Image(); im.src = frameSrc(i); }
+let lastFrame = 0;
+const setFrame = (i) => { if (i !== lastFrame) { spinImg.src = frameSrc(i); lastFrame = i; } };
+
+/* ---------- 섹션 2~4: 화면 폭별 분기 ---------- */
+const mm = gsap.matchMedia();
+
+mm.add(CONFIG.desktop, () => {
+  /* 섹션 2: Sticky 시퀀스 — 스크롤 진행도로 프레임 스크럽 (영상 currentTime 대신) */
+  const texts = gsap.utils.toArray('.seq__text');
+  const spin = { f: 0 };
+  const tl = gsap.timeline({
+    scrollTrigger: { trigger: '.seq', start: 'top top', end: 'bottom bottom', scrub: 1 }
+  });
+  tl.to(spin, { f: CONFIG.seq.frames - 1, ease: 'none', duration: 3,
+        onUpdate: () => setFrame(Math.round(spin.f)) }, 0)
+    .fromTo('.seq__product', { rotate: -CONFIG.seq.rotate, scale: CONFIG.seq.scaleFrom }, { rotate: CONFIG.seq.rotate, scale: CONFIG.seq.scaleTo, ease: 'none', duration: 3 }, 0)
+    .fromTo('.seq__ring', { scale: 0.8, opacity: 0.4 }, { scale: 1.15, opacity: 1, ease: 'none', duration: 3 }, 0)
+    .fromTo('.seq__progress i', { scaleX: 0 }, { scaleX: 1, ease: 'none', duration: 3 }, 0);
+  // 텍스트 3개: 각 1구간씩 페이드 인 → 아웃 (마지막은 유지)
+  texts.forEach((t, i) => {
+    tl.fromTo(t, { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.3 }, i + 0.05);
+    if (i < texts.length - 1) tl.to(t, { opacity: 0, y: -40, duration: 0.3 }, i + 0.75);
+  });
+
+  /* 섹션 3: 시계 */
+  const timeEl = document.querySelector('.clock__time');
+  const descs = gsap.utils.toArray('.clock__desc p');
+  const sun = document.querySelector('.clock__sun');
+  const sky = document.querySelector('.clock__sky');
+  // 시간별 해 상태: angle(아크 위 각도, 180=왼쪽 지평선, 0=오른쪽), color
+  const STATES = [
+    { h: 8,  angle: 155, color: '#D9A86C' },
+    { h: 11, angle: 110, color: '#E8B84A' },
+    { h: 14, angle: 65,  color: '#C98A4B' },
+    { h: 19, angle: 15,  color: '#B5562E' }
+  ];
+  const clock = { h: 8, angle: STATES[0].angle };
+  const fmt = (h) => String(Math.floor(h)).padStart(2, '0') + ':00';
+  const placeSun = () => {
+    const w = sky.clientWidth, r = w / 2, rad = clock.angle * Math.PI / 180;
+    gsap.set(sun, { x: r + Math.cos(rad) * r * 0.86, y: r - Math.sin(rad) * r * 0.86 });
+  };
+  gsap.set(sun, { color: STATES[0].color });
+  placeSun();
+  let current = 0;
+  const setState = (i) => {
+    if (i === current) return;
+    const s = STATES[i];
+    gsap.to(clock, { h: s.h, angle: s.angle, duration: 0.9, ease: 'power2.inOut',
+      onUpdate: () => { timeEl.textContent = fmt(clock.h); placeSun(); } });
+    gsap.to(sun, { color: s.color, duration: 0.9 });
+    gsap.to(descs[current], { opacity: 0, y: -16, duration: 0.35 });
+    gsap.fromTo(descs[i], { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.5, delay: 0.2 });
+    current = i;
+  };
+  gsap.utils.toArray('.day__photo').forEach((photo, i) => {
+    ScrollTrigger.create({
+      trigger: photo, start: 'top center', end: 'bottom center',
+      onToggle: (self) => self.isActive && setState(i)
+    });
+  });
+  window.addEventListener('resize', placeSun);
+
+  /* 섹션 4: 다크 클로즈업 */
+  gsap.fromTo('.dark__product',
+    { y: CONFIG.dark.fromY, rotate: CONFIG.dark.fromRotate, scale: 0.8 },
+    { y: 0, rotate: 0, scale: 1, ease: 'none',
+      scrollTrigger: { trigger: '.dark__stage', start: 'top bottom', end: 'center center', scrub: 1 } });
+  gsap.fromTo('.charge', { opacity: 0, x: 60 }, {
+    opacity: 1, x: 0, duration: 0.8, ease: 'power3.out',
+    scrollTrigger: {
+      trigger: '.dark__stage', start: 'center 70%', toggleActions: 'play none none reverse',
+      onEnter: () => document.querySelector('.charge').classList.add('is-glowing'),
+      onLeaveBack: () => document.querySelector('.charge').classList.remove('is-glowing')
+    }
+  });
+
+  return () => { window.removeEventListener('resize', placeSun); setFrame(0); gsap.set(['.seq__text', '.clock__desc p'], { clearProps: 'all' }); };
+});
+
+mm.add(CONFIG.mobile, () => {
+  // 모바일: sticky/스크럽 없이 단순 페이드업 + 글로우만
+  gsap.utils.toArray('.seq__text, .day__photo, .dark__product').forEach(el => {
+    gsap.from(el, { opacity: 0, y: CONFIG.fade.y, duration: CONFIG.fade.duration, ease: CONFIG.fade.ease,
+      scrollTrigger: { trigger: el, start: CONFIG.fade.start, toggleActions: 'play none none reverse' } });
+  });
+  gsap.to('.charge', { opacity: 1, duration: 0.8, scrollTrigger: { trigger: '.charge', start: 'top 85%',
+    onEnter: () => document.querySelector('.charge').classList.add('is-glowing') } });
+});
+
+window.addEventListener('load', () => ScrollTrigger.refresh());
+</script>
+</body>
+</html>

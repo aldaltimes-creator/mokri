@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>목리 MOKRI — 홈</title>
+<script>if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('js-motion');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Noto+Sans+KR:wght@300;400;500&display=swap">
+<link rel="stylesheet" href="assets/css/site.css">
+<link rel="stylesheet" href="assets/css/home.css">
+</head>
+<body>
+<!-- 페이지 로더: 로고 · 0→100% 카운터 · 하단 진행 바 -->
+<div class="loader" aria-hidden="true">
+  <div class="loader__inner">
+    <svg width="56" height="56" viewBox="0 0 200 200"><g fill="none" stroke="#F2EEE6" stroke-width="4"><ellipse cx="100" cy="100" rx="92" ry="90"/><ellipse cx="97" cy="102" rx="76" ry="73"/><ellipse cx="95" cy="104" rx="60" ry="57"/><ellipse cx="94" cy="105" rx="45" ry="42"/><ellipse cx="93" cy="106" rx="31" ry="29"/><ellipse cx="92" cy="107" rx="18" ry="17"/></g><circle cx="92" cy="107" r="7" fill="#A67B5B"/></svg>
+    <span class="loader__word">MOKRI</span>
+  </div>
+  <span class="loader__count" data-loader-count>0</span>
+  <span class="loader__bar" data-loader-bar></span>
+</div>
+
+<div class="home">
+  <img class="home__backdrop" src="assets/img/hero-lounge.jpg" alt="" aria-hidden="true">
+  <div class="home__wrap">
+
+    <header class="home-header">
+      <a class="home-header__logo" href="index.html" aria-label="목리 홈"><span>Mokri</span><span>木理 · Korean wood furniture</span></a>
+      <nav aria-label="주요 메뉴">
+        <a href="brand.html">브랜드</a>
+        <a href="collection.html">컬렉션</a>
+        <a href="craft.html">크래프트</a>
+        <a href="showroom.html">쇼룸</a>
+        <a href="journal.html">목리 노트</a>
+        <a class="is-cta" href="#signup">프리뷰 신청</a>
+      </nav>
+    </header>
+
+    <main style="display: contents">
+      <section class="panel hero">
+        <div class="hero__img" style="overflow: hidden"><img src="assets/img/hero-lounge.jpg" alt="햇살이 드는 거실의 크림 부클레 스위블 라운지 체어"></div>
+        <div class="hero__body">
+          <div class="hero__top">
+            <p class="hero__lede hero__sub">시간이 쌓일수록 아름다워지는, 한국의 원목 가구를 만듭니다.</p>
+            <img class="hero__detail" src="assets/img/boucle-detail.jpg" alt="부클레 원단 디테일">
+          </div>
+          <div class="hero__bottom">
+            <h1 class="hero__title hero__sub">한국 원목 가구 브랜드</h1>
+            <span class="hero__word" aria-hidden="true">MOKRI</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel row" aria-label="가구 컬렉션">
+        <div class="row__intro">
+          <p class="js-reveal">목리는 가구를 하나의 체계로 짓습니다. 형태와 비례, 소재가 서로 맞물려 공간 전체가 하나로 이어지도록.</p>
+          <span class="row__tag">Furniture<br>collection</span>
+        </div>
+        <figure class="product">
+          <div class="product__frame parallax-frame"><img src="assets/img/sofa.jpg" alt="곡선의 부클레 소파"></div>
+          <figcaption><span class="product__name js-reveal">소파</span><span class="product__num">01 / 바탕</span></figcaption>
+        </figure>
+        <figure class="product">
+          <div class="product__frame product__frame--contain"><img src="assets/img/spin/01.webp" alt="크림 부클레 스위블 라운지 체어"></div>
+          <figcaption><span class="product__name js-reveal">라운지 체어</span><span class="product__num">02 / 포인트</span></figcaption>
+        </figure>
+        <figure class="product">
+          <div class="product__frame parallax-frame"><img src="assets/img/dining-table.jpg" alt="참나무 원목 다이닝 테이블"></div>
+          <figcaption><span class="product__name js-reveal">테이블</span><span class="product__num">03 / 중심</span></figcaption>
+        </figure>
+      </section>
+
+      <section class="panel services" aria-label="목리의 약속">
+        <div class="services__img parallax-frame"><img src="assets/img/lounge-back.jpg" alt="햇살 드는 거실에 놓인 부클레 라운지 체어의 뒷모습"></div>
+        <ul class="services__list">
+          <li><span class="services__name is-accent js-reveal">프라이빗 프리뷰</span><span class="services__desc">예약한 시간, 한 팀만을 위해 공간을 열고 직접 앉아보며 고릅니다</span><span class="stroke stroke--bottom stroke--soft" aria-hidden="true"></span></li>
+          <li><span class="services__name js-reveal">맞춤 제작</span><span class="services__desc">나무와 마감, 사이즈를 집의 평면에 맞춰 한 점씩 짓습니다</span><span class="stroke stroke--bottom stroke--soft" aria-hidden="true"></span></li>
+          <li><span class="services__name js-reveal">제작자 각인</span><span class="services__desc">모든 가구에 번호와 만든 사람의 이름을 새깁니다</span><span class="stroke stroke--bottom stroke--soft" aria-hidden="true"></span></li>
+          <li><span class="services__name js-reveal">평생 수리</span><span class="services__desc">오래 쓸수록 깊어지도록, 평생 고쳐 드립니다</span><span class="stroke stroke--bottom stroke--soft" aria-hidden="true"></span></li>
+        </ul>
+      </section>
+
+      <section id="spin" class="spin" data-spin-root>
+        <div class="spin__head">
+          <span>360° — 끌어서 돌려보세요</span>
+          <span>부클레 · 월넛 스위블 베이스</span>
+        </div>
+        <div class="spin__stage-wrap">
+          <h2 class="spin__title js-reveal">Lounge chair</h2>
+          <div class="spin__stage" data-spin-stage data-frames="assets/img/spin/" data-count="14" data-alt="MARU 라운지 체어 회전 이미지"></div>
+        </div>
+        <div class="spin__controls">
+          <button type="button" class="spin__arrow" data-spin-prev aria-label="왼쪽으로 돌리기"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+          <label for="spinRange" class="sr-only">회전 각도</label>
+          <input id="spinRange" class="spin__range" type="range" min="0" max="13" step="1" value="0" data-spin-range>
+          <button type="button" class="spin__arrow" data-spin-next aria-label="오른쪽으로 돌리기"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+          <button type="button" class="spin__toggle" data-spin-toggle>자동 회전 멈춤</button>
+          <span class="spin__count" data-spin-count>01 / 14</span>
+        </div>
+      </section>
+
+      <section id="lookbook" class="panel row">
+        <div class="row__intro">
+          <div style="display: flex; flex-direction: column; gap: 14px">
+            <h2 class="row__title js-reveal">Lookbook</h2>
+            <p class="js-reveal">어디에 두어도, 쉼이 되는 자리.</p>
+          </div>
+          <span class="row__tag">Maru<br>lounge chair</span>
+        </div>
+        <figure class="look"><div class="parallax-frame"><img src="assets/img/lookbook-01.jpg" alt="부클레 라운지 체어 곡선 디테일"></div><figcaption>01 / 결</figcaption></figure>
+        <figure class="look"><div class="parallax-frame"><img src="assets/img/lookbook-02.jpg" alt="물가 데크 위의 부클레 라운지 체어"></div><figcaption>02 / 물가의 오후</figcaption></figure>
+        <figure class="look"><div class="parallax-frame"><img src="assets/img/lookbook-03.jpg" alt="노을 진 산을 배경으로 놓인 부클레 라운지 체어"></div><figcaption>03 / 노을 아래의 쉼</figcaption></figure>
+      </section>
+
+      <!-- 첫 에디션 제품 카드 마퀴 (자동 흐름 · 드래그 · 스크롤 방향 반응) -->
+      <section class="panel marquee-panel" aria-labelledby="edition-title">
+        <div class="marquee-panel__head">
+          <h2 id="edition-title" class="row__title js-reveal">First edition</h2>
+          <span class="marquee-panel__hint">Drag · 끌어서 넘겨보세요</span>
+        </div>
+        <div class="marquee" data-marquee>
+          <div class="marquee__track">
+            <ul class="marquee__group">
+              <li class="mcard"><div class="mcard__frame"><img src="assets/img/sofa.jpg" alt="곡선의 부클레 모듈 소파" draggable="false"></div><div class="mcard__meta"><span class="mcard__name">모듈 소파</span><span class="mcard__line">Maru</span></div></li>
+              <li class="mcard"><div class="mcard__frame mcard__frame--contain"><img src="assets/img/spin/01.webp" alt="크림 부클레 스위블 라운지 체어" draggable="false"></div><div class="mcard__meta"><span class="mcard__name">라운지 체어</span><span class="mcard__line">Maru</span></div></li>
+              <li class="mcard"><div class="mcard__frame"><img src="assets/img/dining-table.jpg" alt="참나무 원목 다이닝 테이블" draggable="false"></div><div class="mcard__meta"><span class="mcard__name">다이닝 테이블</span><span class="mcard__line">Soban</span></div></li>
+              <li class="mcard"><div class="mcard__frame"><img src="assets/img/side-table.jpg" alt="참나무와 월넛을 짜맞춘 조형 사이드 테이블" draggable="false"></div><div class="mcard__meta"><span class="mcard__name">사이드 테이블</span><span class="mcard__line">Goyo</span></div></li>
+              <li class="mcard"><div class="mcard__frame"><img src="assets/img/frame-chair.jpg" alt="곡선 원목 프레임 라운지 체어" draggable="false"></div><div class="mcard__meta"><span class="mcard__name">원목 프레임 체어</span><span class="mcard__line">First edition</span></div></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="signup" class="panel signup">
+        <div class="signup__intro">
+          <div>
+            <h2 class="signup__title js-reveal">프라이빗 프리뷰</h2>
+            <p class="signup__lede js-reveal">오픈에 앞서, 소수의 분께 첫 컬렉션을 먼저 보여드립니다. 신청 순서대로 일정을 안내드립니다.</p>
+          </div>
+          <ol class="perks">
+            <li><span class="stroke stroke--top stroke--soft" aria-hidden="true"></span><span>01</span>프리뷰 우선 예약<span class="stroke stroke--bottom stroke--soft" aria-hidden="true"></span></li>
+            <li><span>02</span>첫 에디션 넘버링 우선 선택<span class="stroke stroke--bottom stroke--soft" aria-hidden="true"></span></li>
+            <li><span>03</span>웹진 '목리 노트' 발송<span class="stroke stroke--bottom stroke--soft" aria-hidden="true"></span></li>
+          </ol>
+        </div>
+        <div class="signup__side">
+          <div class="signup-done" data-signup-done tabindex="-1" role="status" hidden>
+            <strong>신청이 완료되었습니다</strong>
+            <span>프리뷰 일정이 정해지면 가장 먼저 안내드릴게요.</span>
+          </div>
+          <form class="signup-form" data-signup novalidate>
+            <div class="field">
+              <label for="email">이메일</label>
+              <input id="email" name="email" type="email" autocomplete="email" placeholder="name@example.com" required>
+            </div>
+            <label class="consent"><input id="consent" name="consent" type="checkbox" required>개인정보 수집·이용에 동의합니다 (필수). 이메일은 프리뷰 안내에만 사용하며, 언제든 수신을 거부할 수 있습니다.</label>
+            <span class="signup-error" role="alert" data-signup-error hidden></span>
+            <button type="submit" class="signup-submit">프리뷰 신청하기</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="home-footer">
+      <span>© 2026 Mokri · 木理</span>
+      <nav aria-label="푸터 메뉴"><a href="brand.html">브랜드</a><a href="collection.html">컬렉션</a><a href="craft.html">크래프트</a><a href="showroom.html">쇼룸</a><a href="journal.html">목리 노트</a></nav>
+      <span>Instagram @[계정] · [사업자 정보]</span>
+    </footer>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/CustomEase.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="assets/js/animations.js"></script>
+<script src="assets/js/spin.js"></script>
+<script src="assets/js/signup.js"></script>
+</body>
+</html>

@@ -1,0 +1,5 @@
+# 로컬 개발 도구 설정 (미리보기 서버 등)
+.claude/
+Thumbs.db
+desktop.ini
+.DS_Store
