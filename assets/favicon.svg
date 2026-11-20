@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- 목리(木理) 나뭇결 로고: 먹색 바탕 + 한지색 나이테 + 참나무색 중심 -->
+  <rect width="64" height="64" rx="14" fill="#2B2A28"/>
+  <g fill="none" stroke="#F2EEE6" stroke-width="2.6">
+    <ellipse cx="32" cy="32" rx="24" ry="23.5"/>
+    <ellipse cx="31" cy="33" rx="17" ry="16.5"/>
+    <ellipse cx="30.5" cy="33.5" rx="10.5" ry="10"/>
+  </g>
+  <circle cx="30" cy="34" r="4.2" fill="#A67B5B"/>
+</svg>
