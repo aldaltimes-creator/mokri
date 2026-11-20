@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>우리 아이 앨범 — 꼬물상자</title>
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+  <link rel="stylesheet" href="../assets/style.css">
+  <link rel="stylesheet" href="app.css">
+</head>
+<body>
+  <header class="app-top">
+    <div class="wrap app-top__inner">
+      <a class="logo" href="index.html" aria-label="꼬물상자 앨범">
+        <svg viewBox="0 0 32 32" aria-hidden="true"><rect class="logo__box" x="5" y="12" width="22" height="16" rx="4"/><rect class="logo__lid" x="3" y="8" width="26" height="6" rx="3"/><path class="logo__star" d="m16 1 1.6 3.3 3.6.5-2.6 2.5.6 3.6L16 9.2l-3.2 1.7.6-3.6-2.6-2.5 3.6-.5z"/></svg>
+        꼬물상자
+      </a>
+      <nav class="app-top__nav" aria-label="앱 메뉴">
+        <a href="index.html" aria-current="page">앨범</a>
+        <a href="plans.html">이용권</a>
+        <a href="account.html">계정</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="app-main wrap" id="main">
+    <!-- 처음: 아이 소개 -->
+    <section id="onboard" class="card" hidden style="max-width:560px;margin:20px auto;padding:28px">
+      <p class="eyebrow">처음 한 번만</p>
+      <h1 class="page-title">우리 아이를 소개해 주세요</h1>
+      <p class="muted" style="margin:6px 0 20px">동화와 노래에 아이 이름과 좋아하는 것이 들어가요.</p>
+      <form id="child-form" class="stack">
+        <div class="row">
+          <label class="field"><span>이름</span><input class="input" name="name" required maxlength="20" placeholder="이안"></label>
+          <label class="field"><span>생일 <small>개월 수 계산에 써요</small></span><input class="input" name="birth_date" type="date"></label>
+        </div>
+        <label class="field">
+          <span>좋아하는 것 <small>쉼표로 나눠 적어요</small></span>
+          <input class="input" name="likes" placeholder="소방차, 기차, 빨간색">
+        </label>
+        <label class="field">
+          <span>가족 호칭 <small>선택</small></span>
+          <input class="input" name="family_call" maxlength="60" placeholder="엄마, 아빠, 할머니">
+        </label>
+        <button class="btn btn--primary btn--block" type="submit">시작하기</button>
+      </form>
+    </section>
+
+    <!-- 앨범 -->
+    <section id="dash" hidden>
+      <div class="dash-head">
+        <div class="kid-chip">
+          <div class="kid-chip__avatar" id="kid-initial" aria-hidden="true"></div>
+          <div>
+            <h1 class="kid-chip__name" id="kid-name"></h1>
+            <div class="kid-chip__likes" id="kid-likes"></div>
+          </div>
+        </div>
+        <div class="plan-box" id="plan-box"></div>
+      </div>
+
+      <p class="notice" id="save-notice" hidden style="margin-top:16px"></p>
+
+      <div class="month-bar">
+        <div class="month-bar__nav">
+          <button class="icon-btn" id="prev-month" type="button" aria-label="지난달">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 5-7 7 7 7"/></svg>
+          </button>
+          <h2 class="month-bar__label" id="month-label" aria-live="polite"></h2>
+          <button class="icon-btn" id="next-month" type="button" aria-label="다음 달">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg>
+          </button>
+        </div>
+        <button class="btn btn--primary btn--sm" id="new-record" type="button">+ 오늘 기록하기</button>
+      </div>
+
+      <section class="card moments-card" aria-labelledby="moments-title">
+        <div class="moments-card__head">
+          <h2 id="moments-title">이달의 순간</h2>
+          <button class="btn--text" id="edit-moments" type="button">적기</button>
+        </div>
+        <dl class="moment-list" id="moment-list"></dl>
+      </section>
+
+      <div class="records" id="records" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <!-- 기록 쓰기 -->
+  <dialog class="sheet" id="record-dialog" aria-labelledby="record-dialog-title">
+    <form method="dialog" id="record-form">
+      <div class="sheet__head">
+        <h2 id="record-dialog-title">오늘 기록</h2>
+        <button class="sheet__close" value="cancel" formnovalidate aria-label="닫기">×</button>
+      </div>
+      <div class="sheet__body">
+        <div class="row">
+          <label class="field"><span>날짜</span><input class="input" name="record_date" type="date" required></label>
+          <label class="field"><span>제목</span><input class="input" name="title" required maxlength="40" placeholder="소방서 구경 간 날"></label>
+        </div>
+        <div class="field">
+          <span>사진 <small>최대 6장</small></span>
+          <div class="photo-pick" id="photo-pick">
+            <label class="photo-pick__add" title="사진 고르기">+<input type="file" id="photo-input" accept="image/*" multiple hidden></label>
+          </div>
+        </div>
+        <label class="field">
+          <span>오늘 있었던 일</span>
+          <textarea class="textarea" name="happened" required maxlength="1000" placeholder="동네 소방서에 처음 가 봤어요. 커다란 소방차 앞에서 한참을 서 있었어요."></textarea>
+        </label>
+        <label class="field">
+          <span>아이가 한 말 <small>선택</small></span>
+          <input class="input" name="child_words" maxlength="200" placeholder="엄마, 빵빵! 삐뽀삐뽀!">
+        </label>
+        <label class="field">
+          <span>요즘 힘들어하는 것 <small>선택 · 적으면 좋아하는 것으로 풀어낸 동화가 돼요</small></span>
+          <input class="input" name="worry" maxlength="200" placeholder="양치하기 싫어해요">
+        </label>
+      </div>
+      <div class="sheet__foot">
+        <button class="btn btn--ghost btn--sm" value="cancel" formnovalidate>취소</button>
+        <button class="btn btn--primary btn--sm" id="record-save" value="save">저장</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- 이달의 순간 -->
+  <dialog class="sheet" id="moment-dialog" aria-labelledby="moment-dialog-title">
+    <form method="dialog" id="moment-form">
+      <div class="sheet__head">
+        <h2 id="moment-dialog-title">이달의 순간</h2>
+        <button class="sheet__close" value="cancel" formnovalidate aria-label="닫기">×</button>
+      </div>
+      <div class="sheet__body">
+        <label class="field"><span>가장 좋아한 말</span><input class="input" name="favorite_word" maxlength="100" placeholder="빵빵!"></label>
+        <label class="field"><span>처음 한 말</span><input class="input" name="first_word" maxlength="100" placeholder="아빠 안아, 꼭!"></label>
+        <label class="field"><span>처음 한 행동</span><input class="input" name="first_action" maxlength="100" placeholder="크레용으로 첫 그림"></label>
+      </div>
+      <div class="sheet__foot">
+        <button class="btn btn--ghost btn--sm" value="cancel" formnovalidate>취소</button>
+        <button class="btn btn--primary btn--sm" value="save">저장</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- 만들기 확인 -->
+  <dialog class="sheet" id="make-dialog" aria-labelledby="make-dialog-title">
+    <form method="dialog">
+      <div class="sheet__head">
+        <h2 id="make-dialog-title">동화 만들기</h2>
+        <button class="sheet__close" value="cancel" aria-label="닫기">×</button>
+      </div>
+      <div class="sheet__body">
+        <p id="make-text"></p>
+        <p class="muted">만드는 데 1분쯤 걸려요. 이 화면을 닫지 말고 기다려 주세요.</p>
+      </div>
+      <div class="sheet__foot">
+        <button class="btn btn--ghost btn--sm" value="cancel">취소</button>
+        <button class="btn btn--primary btn--sm" value="make" id="make-confirm">만들기</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+  <script type="module" src="album.js"></script>
+</body>
+</html>
